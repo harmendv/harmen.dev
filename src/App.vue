@@ -1,5 +1,124 @@
 <template>
   <div id="app">
-    <router-view/>
+    <vue-menu>
+      <vue-menu-group title="harmen.dev">
+        <vue-menu-item
+          to="/eslint"
+          label=".eslintrc.js"
+        />
+        <vue-menu-item
+          to="/gitignore"
+          label=".gitignore"
+        />
+        <vue-menu-item
+          to="/"
+          label="package.json"
+        />
+        <vue-menu-item
+          to="/babel"
+          label="babel.config.js"
+        />
+        <vue-menu-item
+          to="/stylelint"
+          label="stylelint.config.js"
+        />
+        <vue-menu-item
+          to="/valet"
+          label="LocalValetDriver.php"
+        />
+        <vue-menu-item
+          to="/readme"
+          label="README.md"
+        />
+      </vue-menu-group>
+    </vue-menu>
+    <main>
+      <vue-open-files :files="openFiles" />
+      <div class="content">
+        <router-view />
+      </div>
+    </main>
   </div>
 </template>
+
+<script>
+import '@/assets/sass/app.scss';
+
+import VueMenu from '@/components/VueMenu.vue';
+import VueMenuItem from '@/components/VueMenuItem.vue';
+import VueMenuGroup from '@/components/VueMenuGroup.vue';
+import VueOpenFiles from '@/components/VueOpenFiles.vue';
+
+import eventBus from '@/utils/eventBus';
+
+export default {
+  components: {
+    VueMenu,
+    VueMenuItem,
+    VueMenuGroup,
+    VueOpenFiles,
+  },
+  data() {
+    return {
+      openFiles: [],
+    };
+  },
+  watch: {
+    $route: {
+      handler(to) {
+        // On mount check the path and add it
+        let openFilesContainsPathOnLoad = false;
+        this.openFiles.forEach((file) => {
+          if (file.path === to.path) {
+            openFilesContainsPathOnLoad = true;
+          }
+        });
+
+        if (!openFilesContainsPathOnLoad) {
+          this.openFiles.push({ label: to.meta.label, path: to.path });
+        }
+      },
+    },
+  },
+  mounted() {
+    // On closing a file
+    eventBus.$on('close-file', (data) => {
+      // Find the index of the file and remove it
+      let index = false;
+      this.openFiles.forEach((file, i) => {
+        if (file.label === data.label) {
+          index = i;
+        }
+      });
+      // Remove the index from the array
+      this.openFiles.splice(index, 1);
+      // Go to the previous index in the array
+      const path = this.openFiles[index - 1]
+        ? this.openFiles[index - 1].path : this.openFiles[0].path;
+      this.viewPath(path);
+    });
+
+    // On opening a file
+    eventBus.$on('click-menu-item', (data) => {
+      // Check if openFile already
+      let exists = false;
+      this.openFiles.forEach((file) => {
+        if (file.label === data.label) {
+          exists = true;
+        }
+      });
+
+      if (!exists) {
+        this.openFiles.push(data);
+      }
+    });
+  },
+  methods: {
+    viewPath(p) {
+      this.$router.push({
+        path: p,
+      });
+    },
+  },
+};
+</script>
