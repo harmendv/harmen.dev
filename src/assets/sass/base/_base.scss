@@ -15,13 +15,31 @@ main {
   display: flex;
   flex-direction: column;
   width: 100%;
+  max-width: calc(100vw - var(--menu-width));
   min-height: 100vh;
+  max-height: 100vh;
   font-size: 14px;
   font-weight: 200;
 
   .content {
     flex-grow: 1;
     width: 100%;
+    max-height: calc(100vh - 41px);
+    overflow-y: auto;
     background-color: var(--file-background);
+
+    &::-webkit-scrollbar {
+      width: 12px;
+    }
+
+    &::-webkit-scrollbar-track {
+      // box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      padding: 4px;
+      border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: var(--scrollbar);
+    }
   }
 }

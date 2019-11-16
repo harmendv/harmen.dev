@@ -45,11 +45,12 @@ export default {
 .open-files {
   display: flex;
   flex-direction: row;
+  flex-shrink: 0;
+  height: 41px;
   overflow: hidden;
 
   .open-file {
     flex-shrink: 0;
-    margin-right: 1px;
     padding: 10px 20px;
     color: var(--menu-color);
     cursor: pointer;

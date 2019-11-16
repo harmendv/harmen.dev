@@ -1,8 +1,9 @@
 <template>
-  <div>
+  <div class="code">
     <!-- eslint-disable -->
-    <vue-code-highlight v-if="Object.entries(code).length">{{ JSON.stringify(code, null, 2) }}</vue-code-highlight>
-    <vue-code-highlight v-if="text.length">{{ text }}</vue-code-highlight>
+    <vue-code-highlight class="highlight" v-if="Object.entries(code).length">{{ JSON.stringify(code, null, 2) }}</vue-code-highlight>
+    <vue-code-highlight class="highlight" v-else-if="text.length">{{ text }}</vue-code-highlight>
+    <vue-code-highlight class="highlight" v-else><slot /></vue-code-highlight>
   </div>
 </template>
 
@@ -28,7 +29,24 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
+.highlight pre {
+  margin: 0 !important;
+
+  &::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  &::-webkit-scrollbar-track {
+    // box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    padding: 4px;
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--scrollbar);
+  }
+}
 /* stylelint-disable */
 
 /**

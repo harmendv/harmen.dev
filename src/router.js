@@ -5,6 +5,10 @@ import Router from 'vue-router';
 const Index = () => import(/* webpackChunkName: "view-index" */'@/views/Index.vue');
 const GitIgnore = () => import(/* webpackChunkName: "view-gitignore" */'@/views/GitIgnore.vue');
 const Eslint = () => import(/* webpackChunkName: "view-eslint" */'@/views/Eslint.vue');
+const Babel = () => import(/* webpackChunkName: "view-babel" */'@/views/Babel.vue');
+const Stylelint = () => import(/* webpackChunkName: "view-stylelint" */'@/views/Stylelint.vue');
+const Valet = () => import(/* webpackChunkName: "view-valet" */'@/views/Valet.vue');
+const Readme = () => import(/* webpackChunkName: "view-readme" */'@/views/Readme.vue');
 
 Vue.use(Router);
 
@@ -39,7 +43,7 @@ export default new Router({
     {
       path: '/babel',
       name: 'babel',
-      component: Index,
+      component: Babel,
       meta: {
         label: 'babel.config.js',
       },
@@ -47,7 +51,7 @@ export default new Router({
     {
       path: '/stylelint',
       name: 'stylelint',
-      component: Index,
+      component: Stylelint,
       meta: {
         label: 'stylelint.config.js',
       },
@@ -55,7 +59,7 @@ export default new Router({
     {
       path: '/valet',
       name: 'valet',
-      component: Index,
+      component: Valet,
       meta: {
         label: 'LocalValetDriver.php',
       },
@@ -63,7 +67,7 @@ export default new Router({
     {
       path: '/readme',
       name: 'readme',
-      component: Index,
+      component: Readme,
       meta: {
         label: 'README.md',
       },
