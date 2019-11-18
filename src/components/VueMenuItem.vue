@@ -10,7 +10,7 @@
       @click.native="onClickMenuItem"
     >
       <vue-icon
-        name="file"
+        :name="icon"
         :label="label"
       />
     </router-link>
@@ -40,6 +40,11 @@ export default {
       type: String,
       default: '',
       required: true,
+    },
+    icon: {
+      type: String,
+      default: 'file',
+      required: false,
     },
   },
   methods: {

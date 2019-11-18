@@ -5,10 +5,12 @@
         <vue-menu-item
           to="/eslint"
           label=".eslintrc.js"
+          icon="settings"
         />
         <vue-menu-item
           to="/gitignore"
           label=".gitignore"
+          icon="github"
         />
         <vue-menu-item
           to="/"
@@ -17,17 +19,21 @@
         <vue-menu-item
           to="/babel"
           label="babel.config.js"
+          icon="settings"
         />
         <vue-menu-item
           to="/stylelint"
           label="stylelint.config.js"
+          icon="settings"
         />
         <vue-menu-item
           to="/valet"
           label="LocalValetDriver.php"
+          icon="code"
         />
         <vue-menu-item
           to="/readme"
+          icon="file-text"
           label="README.md"
         />
       </vue-menu-group>
