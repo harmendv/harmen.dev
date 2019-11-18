@@ -11,10 +11,12 @@
   * @param  string  $uri
   * @return bool
   */
+
   public function serves($sitePath, $siteName, $uri)
   {
     return true;
   }
+
   /**
   * Determine if the incoming request is for a static file.
   *
@@ -23,6 +25,7 @@
   * @param  string  $uri
   * @return string|false
   */
+
   public function isStaticFile($sitePath, $siteName, $uri)
   {
     if (file_exists($staticFilePath = $sitePath.'/dist/'.$uri)) {
@@ -40,10 +43,12 @@
   * @param  string  $uri
   * @return string
   */
+
   public function frontControllerPath($sitePath, $siteName, $uri)
   {
     return $sitePath.'/dist/index.html';
   }
+
 }
     </vue-code>
   </div>
