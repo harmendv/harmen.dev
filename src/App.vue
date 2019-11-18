@@ -13,17 +13,8 @@
           icon="github"
         />
         <vue-menu-item
-          to="/"
-          label="package.json"
-        />
-        <vue-menu-item
           to="/babel"
           label="babel.config.js"
-          icon="settings"
-        />
-        <vue-menu-item
-          to="/stylelint"
-          label="stylelint.config.js"
           icon="settings"
         />
         <vue-menu-item
@@ -32,9 +23,18 @@
           icon="code"
         />
         <vue-menu-item
+          to="/"
+          label="package.json"
+        />
+        <vue-menu-item
           to="/readme"
           icon="file-text"
           label="README.md"
+        />
+        <vue-menu-item
+          to="/stylelint"
+          label="stylelint.config.js"
+          icon="settings"
         />
       </vue-menu-group>
     </vue-menu>
