@@ -1,9 +1,9 @@
 <template>
   <div class="code">
     <!-- eslint-disable -->
-    <vue-code-highlight class="highlight" v-if="Object.entries(code).length">{{ JSON.stringify(code, null, 2) }}</vue-code-highlight>
-    <vue-code-highlight class="highlight" v-else-if="text.length">{{ text }}</vue-code-highlight>
-    <vue-code-highlight class="highlight" v-else><slot /></vue-code-highlight>
+    <vue-code-highlight contenteditable class="highlight" v-if="Object.entries(code).length">{{ JSON.stringify(code, null, 2) }}</vue-code-highlight>
+    <vue-code-highlight contenteditable class="highlight" v-else-if="text.length">{{ text }}</vue-code-highlight>
+    <vue-code-highlight contenteditable class="highlight" v-else><slot /></vue-code-highlight>
   </div>
 </template>
 
@@ -30,6 +30,10 @@ export default {
 </script>
 
 <style lang="scss">
+.highlight {
+  outline: none;
+}
+
 .highlight pre {
   margin: 0 !important;
 
