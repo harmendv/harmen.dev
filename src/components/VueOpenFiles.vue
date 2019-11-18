@@ -54,6 +54,7 @@ export default {
     padding: 10px 20px;
     color: var(--menu-color);
     cursor: pointer;
+    user-select: none;
 
     .open-file-close {
       opacity: 0.2;

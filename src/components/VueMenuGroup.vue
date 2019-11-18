@@ -1,12 +1,17 @@
 <template>
-  <div class="menu-group">
+  <div
+    class="menu-group"
+    :class="{'is-opened': opened}"
+  >
     <div
       v-if="title"
       class="menu-group-title"
     >
       <vue-icon name="folder" /> {{ title }}
     </div>
-    <slot />
+    <div class="menu-group-items">
+      <slot />
+    </div>
   </div>
 </template>
 
@@ -16,6 +21,11 @@ import VueIcon from '@/components/VueIcon.vue';
 export default {
   components: { VueIcon },
   props: {
+    opened: {
+      type: Boolean,
+      required: false,
+      default: true,
+    },
     title: {
       type: String,
       default: '',
