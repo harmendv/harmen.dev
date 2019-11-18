@@ -17,7 +17,7 @@
       :yargs-options="{ alias: { color: ['colour'] } }"
       :commands="commands"
       hide-bar
-      prompt="~root@harmen.dev"
+      prompt="~you@harmen.dev"
       intro="Welcome to harmen.dev"
       show-intro
     />
@@ -37,7 +37,7 @@ export default {
   data() {
     return {
       intro: 'Welcome to harmen.dev<br />Type <em>help</em> to list the available commands.',
-      opened: true,
+      opened: false,
       commands: {
         // yargs arguments
         help: () => 'Available commands: <br/> help rockbox playalong',
