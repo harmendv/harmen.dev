@@ -48,6 +48,7 @@
           <router-view />
         </transition>
       </div>
+      <vue-terminal />
     </main>
   </div>
 </template>
@@ -59,6 +60,7 @@ import VueMenu from '@/components/VueMenu.vue';
 import VueMenuItem from '@/components/VueMenuItem.vue';
 import VueMenuGroup from '@/components/VueMenuGroup.vue';
 import VueOpenFiles from '@/components/VueOpenFiles.vue';
+import VueTerminal from '@/components/VueTerminal.vue';
 
 import eventBus from '@/utils/eventBus';
 
@@ -68,6 +70,7 @@ export default {
     VueMenuItem,
     VueMenuGroup,
     VueOpenFiles,
+    VueTerminal,
   },
   data() {
     return {
@@ -84,11 +87,12 @@ export default {
             openFilesContainsPathOnLoad = true;
           }
         });
-
-        if (!openFilesContainsPathOnLoad) {
-          this.openFiles.push({ label: to.meta.label, path: to.path, icon: 'file' });
+        // Add files
+        if (!openFilesContainsPathOnLoad && to.meta.label) {
+          this.openFiles.push({ label: to.meta.label, path: to.path, icon: to.meta.icon });
         }
       },
+      immediate: true,
     },
   },
   mounted() {
@@ -107,21 +111,6 @@ export default {
       const path = this.openFiles[index - 1]
         ? this.openFiles[index - 1].path : this.openFiles[0].path;
       this.viewPath(path);
-    });
-
-    // On opening a file
-    eventBus.$on('click-menu-item', (data) => {
-      // Check if openFile already
-      let exists = false;
-      this.openFiles.forEach((file) => {
-        if (file.label === data.label) {
-          exists = true;
-        }
-      });
-
-      if (!exists) {
-        this.openFiles.push(data);
-      }
     });
   },
   methods: {

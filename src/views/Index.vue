@@ -40,6 +40,7 @@ export default {
         },
         dependencies: {
           wife: '^v1.0.4-14-g2414721',
+          son: '0.0.28-rc',
         },
       },
     };

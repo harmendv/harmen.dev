@@ -10,6 +10,7 @@
       <vue-icon
         :name="file.icon"
         :label="file.label"
+        class="open-file-title"
       />
       <vue-icon
         v-if="files.length > 1"
@@ -57,7 +58,11 @@ export default {
     padding: 10px 20px;
     color: var(--menu-color);
     cursor: pointer;
-    user-select: none;
+
+    .open-file-title {
+      pointer-events: none;
+      user-select: none;
+    }
 
     .open-file-close {
       opacity: 0.2;

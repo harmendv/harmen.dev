@@ -22,6 +22,7 @@ export default new Router({
       component: Index,
       meta: {
         label: 'package.json',
+        icon: 'file',
       },
     },
     {
@@ -30,6 +31,7 @@ export default new Router({
       component: Eslint,
       meta: {
         label: '.eslintrc.js',
+        icon: 'settings',
       },
     },
     {
@@ -38,6 +40,7 @@ export default new Router({
       component: GitIgnore,
       meta: {
         label: '.gitignore',
+        icon: 'github',
       },
     },
     {
@@ -46,6 +49,7 @@ export default new Router({
       component: Babel,
       meta: {
         label: 'babel.config.js',
+        icon: 'settings',
       },
     },
     {
@@ -54,6 +58,7 @@ export default new Router({
       component: Stylelint,
       meta: {
         label: 'stylelint.config.js',
+        icon: 'settings',
       },
     },
     {
@@ -62,6 +67,7 @@ export default new Router({
       component: Valet,
       meta: {
         label: 'LocalValetDriver.php',
+        icon: 'code',
       },
     },
     {
@@ -70,6 +76,7 @@ export default new Router({
       component: Readme,
       meta: {
         label: 'README.md',
+        icon: 'file-text',
       },
     },
   ],
