@@ -86,7 +86,7 @@ export default {
         });
 
         if (!openFilesContainsPathOnLoad) {
-          this.openFiles.push({ label: to.meta.label, path: to.path });
+          this.openFiles.push({ label: to.meta.label, path: to.path, icon: 'file' });
         }
       },
     },

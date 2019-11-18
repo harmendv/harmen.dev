@@ -8,14 +8,16 @@
       class="menu-group-title"
       @click="isOpened = !isOpened"
     >
-      <vue-icon name="folder" /> {{ title }}
+      <vue-icon :name="isOpened ? 'folder-minus' : 'folder-plus'" /> {{ title }}
     </div>
-    <div
-      v-if="isOpened"
-      class="menu-group-items"
-    >
-      <slot />
-    </div>
+    <transition name="expand">
+      <div
+        v-if="isOpened"
+        class="menu-group-items"
+      >
+        <slot />
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -59,8 +61,22 @@ export default {
       margin-bottom: 10px;
     }
 
-    .menu-item {
+    .menu-group-items {
+      height: 100%;
       margin-left: 10px;
+      overflow: hidden;
     }
+  }
+
+  /* TRANSITION */
+  .expand-enter-active,
+  .expand-leave-active {
+    transition: all 0.2s;
+  }
+
+  .expand-enter,
+  .expand-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    transform: translateY(-10px);
+    opacity: 0;
   }
 </style>

@@ -49,7 +49,7 @@ export default {
   },
   methods: {
     onClickMenuItem() {
-      eventBus.$emit('click-menu-item', { label: this.label, path: this.to });
+      eventBus.$emit('click-menu-item', { label: this.label, path: this.to, icon: this.icon });
     },
   },
 };

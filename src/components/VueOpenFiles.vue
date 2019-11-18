@@ -7,7 +7,10 @@
       :class="{'is-active': file.path === $route.path }"
       @click.self="$router.push({ path: file.path })"
     >
-      {{ file.label }}
+      <vue-icon
+        :name="file.icon"
+        :label="file.label"
+      />
       <vue-icon
         v-if="files.length > 1"
         class="open-file-close"
