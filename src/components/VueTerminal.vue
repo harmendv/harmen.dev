@@ -18,8 +18,6 @@
       :commands="commands"
       hide-bar
       prompt="~you@harmen.dev"
-      intro="Welcome to harmen.dev"
-      show-intro
     />
   </div>
 </template>
@@ -40,30 +38,34 @@ export default {
       opened: false,
       commands: {
         // yargs arguments
-        help: () => 'Available commands: <br/> help rockbox playalong',
+        help: () => 'Available commands: <br/> help rockbox play',
         about: () => 'about time to <a target="_blank" href="https://www.youtube.com/watch?v=oEGL7j2LN84">click here.</a>',
         rockbox: () => {
           setTimeout(() => {
-            window.location = 'http://rockbox.harmen.dev';
+            window.open('http://rockbox.harmen.dev', '_blank');
           }, 2000);
-          return 'Redirecting you to rockbox.harmen.dev. Goodbye :-)';
+          return 'Opening rockbox.harmen.dev';
         },
-        playalong: ({ _ }) => {
+        clear: () => {
+          this.opened = false; setTimeout(() => { this.opened = true; }, 1);
+        },
+        play: ({ _ }) => {
           const list = {
             hotel: 'https://www.youtube.com/watch?v=1p7C1Qa2C2Y',
             blues: 'https://www.youtube.com/watch?v=V6aZZFnZUVk',
             sephora: 'https://www.youtube.com/watch?v=IyXQmi-94Dg',
             minor: 'https://www.youtube.com/watch?v=UGCxrt7Gcb4',
           };
-          console.log(_[1]);
           if (_[1] === 'list') {
             return Object.keys(list).toString();
           }
-          console.log(Array.from(Object.keys(list)), _[1]);
           if (Array.from(Object.keys(list)).includes(_[1])) {
-            window.open(list[_[1]], '_blank');
+            setTimeout(() => {
+              window.open(list[_[1]], '_blank');
+            }, 2000);
+            return `Opening '${_[1]}' in a new window with uri <a href="${list[_[1]]}">${list[_[1]]}</a>`;
           }
-          return 'Use \'playalong &lt;name&gt;\'. Use \'playalong list\' to see all available play alongs.';
+          return 'Use \'play &lt;name&gt;\'. Use \'play list\' to see all available play alongs.';
         },
       },
     };
@@ -85,7 +87,7 @@ export default {
 
   .terminal-header {
     padding: 5px 10px;
-    background-color: #1c1d27;
+    background-color: #2d2f3c;
     color: #787d9b;
     cursor: pointer;
   }
@@ -93,6 +95,15 @@ export default {
   .vue-command {
     .term {
       border: 0;
+      font-size: 14px;
+    }
+
+    input {
+      font-size: 14px;
+    }
+
+    .term-cont {
+      padding: 5px 10px;
     }
 
     .term-std {
@@ -100,7 +111,7 @@ export default {
       max-height: 300px;
       overflow-y: scroll;
       border: 0;
-      background-color: #17181f;
+      background-color: #1e1f29;
     }
   }
 }
