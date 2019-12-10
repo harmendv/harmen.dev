@@ -158,19 +158,19 @@ pre[class*='language-'] {
 .token.url,
 .language-css .token.string,
 .style .token.string {
-  background: hsla(0, 0%, 100%, 0.5);
-  color: #9a6e3a;
+  background: rgba(255, 255, 255, 0.04);
+  color: #787d9b;
 }
 
 .token.atrule,
 .token.attr-value,
 .token.keyword {
-  color: #07a;
+  color: #0ec7ff;
 }
 
 .token.function,
 .token.class-name {
-  color: #dd4a68;
+  color: #efc83e;
 }
 
 .token.regex,
