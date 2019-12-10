@@ -1,9 +1,9 @@
 <template>
   <div>
-    <!-- eslint-disable -->
-    <vue-code># harmen.dev
-[E-mail](mailto:mail@harmen.dev)
-    </vue-code>
+    <vue-code
+      :code="code"
+      language="md"
+    />
   </div>
 </template>
 
@@ -16,7 +16,8 @@ export default {
   },
   data() {
     return {
-      code: '',
+      code: `# harmen.dev
+[E-mail](mailto:mail@harmen.dev)`,
     };
   },
 };

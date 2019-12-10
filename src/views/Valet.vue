@@ -1,7 +1,22 @@
 <template>
   <div>
-    <!-- eslint-disable -->
-    <vue-code>class LocalValetDriver extends LaravelValetDriver
+    <vue-code
+      :code="code"
+      language="php"
+    />
+  </div>
+</template>
+
+<script>
+import VueCode from '@/components/VueCode.vue';
+
+export default {
+  components: {
+    VueCode,
+  },
+  data() {
+    return {
+      code: `class LocalValetDriver extends LaravelValetDriver
 {
   /**
   * Determine if the driver serves the request.
@@ -50,20 +65,7 @@
   }
 
 }
-    </vue-code>
-  </div>
-</template>
-
-<script>
-import VueCode from '@/components/VueCode.vue';
-
-export default {
-  components: {
-    VueCode,
-  },
-  data() {
-    return {
-      code: '',
+      `,
     };
   },
 };

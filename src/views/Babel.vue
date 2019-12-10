@@ -1,6 +1,9 @@
 <template>
   <div>
-    <vue-code :code="code" />
+    <vue-code
+      :code="code"
+      language="js"
+    />
   </div>
 </template>
 
@@ -13,13 +16,13 @@ export default {
   },
   data() {
     return {
-      code: {
-        presets: [
-          ['@vue/app', {
-            useBuiltIns: 'entry',
-          }],
-        ],
-      },
+      code: `{
+  presets: [
+    ['@vue/app', {
+      useBuiltIns: 'entry',
+    }],
+  ],
+},`,
     };
   },
 };

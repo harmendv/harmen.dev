@@ -1,6 +1,9 @@
 <template>
   <div>
-    <vue-code :text="text" />
+    <vue-code
+      :code="code"
+      language="text"
+    />
   </div>
 </template>
 
@@ -13,7 +16,27 @@ export default {
   },
   data() {
     return {
-      text: '.DS_Store\nnode_modules\n/dist\n\n# local env files\n.env.local\n.env.*.local\n\n# Log files\nnpm-debug.log*\nyarn-debug.log*\nyarn-error.log*\n\n# Editor directories and files\n.idea\n.vscode\n*.suo\n*.ntvs*\n*.njsproj\n*.sln\n*.sw?',
+      code: `.DS_Store
+node_modules
+/dist
+
+# local env files
+.env.local
+.env.*.local
+
+n# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?`,
     };
   },
 };

@@ -1,73 +1,70 @@
 <template>
   <div class="code">
-    <!-- eslint-disable -->
-    <vue-code-highlight contenteditable class="highlight" v-if="Object.entries(code).length">{{ JSON.stringify(code, null, 2) }}</vue-code-highlight>
-    <vue-code-highlight contenteditable class="highlight" v-else-if="text.length">{{ text }}</vue-code-highlight>
-    <vue-code-highlight contenteditable class="highlight" v-else><slot /></vue-code-highlight>
+    <prism-editor
+      v-model="model"
+      :language="language"
+      :line-numbers="true"
+    />
   </div>
 </template>
 
 <script>
-import { component as VueCodeHighlight } from 'vue-code-highlight';
+import 'prismjs';
+import PrismEditor from 'vue-prism-editor';
+import 'vue-prism-editor/dist/VuePrismEditor.css';
 
 export default {
   components: {
-    VueCodeHighlight,
+    PrismEditor,
   },
   props: {
     code: {
-      type: Object,
-      default() {
-        return {};
-      },
-    },
-    text: {
       type: String,
       default: '',
+      required: true,
+    },
+    language: {
+      type: String,
+      default: 'js',
+    },
+  },
+  data() {
+    return {
+      changedCode: this.code,
+    };
+  },
+  computed: {
+    model: {
+      // getter
+      get() {
+        return this.changedCode;
+      },
+      // setter
+      set(newValue) {
+        this.changedCode = newValue;
+      },
     },
   },
 };
 </script>
 
-<style lang="scss">
-.highlight {
-  outline: none;
-}
-
-.highlight pre {
-  margin: 0 !important;
-
-  &::-webkit-scrollbar {
-    width: 12px;
-  }
-
-  &::-webkit-scrollbar-track {
-    // box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-    padding: 4px;
-    border-radius: 10px;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: var(--scrollbar);
-  }
-}
+<style lang="scss" >
 /* stylelint-disable */
 
 /**
- * Dracula Theme originally by Zeno Rocha [@zenorocha]
- * https://draculatheme.com/
- *
- * Ported for PrismJS by Albert Vallverdu [@byverdu]
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
  */
 
 code[class*='language-'],
 pre[class*='language-'] {
   background: none;
-  color: #f8f8f2;
+  color: #c2cbff;
   font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  font-size: 1em;
   line-height: 1.5;
   text-align: left;
-  text-shadow: 0 1px rgba(0, 0, 0, 0.3);
   word-wrap: normal;
   word-break: normal;
   white-space: pre;
@@ -81,17 +78,38 @@ pre[class*='language-'] {
   tab-size: 4;
 }
 
+pre[class*='language-']::-moz-selection,
+pre[class*='language-'] ::-moz-selection,
+code[class*='language-']::-moz-selection,
+code[class*='language-'] ::-moz-selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+pre[class*='language-']::selection,
+pre[class*='language-'] ::selection,
+code[class*='language-']::selection,
+code[class*='language-'] ::selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+@media print {
+  code[class*='language-'],
+  pre[class*='language-'] {
+    text-shadow: none;
+  }
+}
+
 /* Code blocks */
 pre[class*='language-'] {
   margin: 0.5em 0;
-  padding: 1em;
+  padding-left: 10px;
   overflow: auto;
-  border-radius: 0.3em;
 }
 
 :not(pre) > code[class*='language-'],
 pre[class*='language-'] {
-  background: #282a36;
 }
 
 /* Inline code */
@@ -105,11 +123,11 @@ pre[class*='language-'] {
 .token.prolog,
 .token.doctype,
 .token.cdata {
-  color: #6272a4;
+  color: slategray;
 }
 
 .token.punctuation {
-  color: #f8f8f2;
+  color: #999;
 }
 
 .namespace {
@@ -118,15 +136,12 @@ pre[class*='language-'] {
 
 .token.property,
 .token.tag,
+.token.boolean,
+.token.number,
 .token.constant,
 .token.symbol,
 .token.deleted {
-  color: #ff79c6;
-}
-
-.token.boolean,
-.token.number {
-  color: #bd93f9;
+  color: #ff6fbf;
 }
 
 .token.selector,
@@ -135,32 +150,33 @@ pre[class*='language-'] {
 .token.char,
 .token.builtin,
 .token.inserted {
-  color: #50fa7b;
+  color: #94ffc4;
 }
 
 .token.operator,
 .token.entity,
 .token.url,
 .language-css .token.string,
-.style .token.string,
-.token.variable {
-  color: #f8f8f2;
+.style .token.string {
+  background: hsla(0, 0%, 100%, 0.5);
+  color: #9a6e3a;
 }
 
 .token.atrule,
 .token.attr-value,
-.token.function,
-.token.class-name {
-  color: #f1fa8c;
+.token.keyword {
+  color: #07a;
 }
 
-.token.keyword {
-  color: #8be9fd;
+.token.function,
+.token.class-name {
+  color: #dd4a68;
 }
 
 .token.regex,
-.token.important {
-  color: #ffb86c;
+.token.important,
+.token.variable {
+  color: #e90;
 }
 
 .token.important,
