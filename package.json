@@ -9,7 +9,14 @@
   },
   "dependencies": {
     "core-js": "^2.6.5",
+    "feather-icons": "^4.24.1",
+    "lodash": "^4.17.15",
+    "prismjs": "^1.17.1",
+    "raw-loader": "^3.1.0",
+    "save": "^2.4.0",
     "vue": "^2.6.10",
+    "vue-command": "^7.0.5",
+    "vue-prism-editor": "^0.3.0",
     "vue-router": "^3.0.3",
     "vuex": "^3.0.1"
   },
@@ -24,6 +31,11 @@
     "lint-staged": "^8.1.5",
     "sass": "^1.18.0",
     "sass-loader": "^7.1.0",
+    "stylelint": "^11.1.1",
+    "stylelint-config-property-sort-order-smacss": "^5.0.0",
+    "stylelint-config-standard": "^19.0.0",
+    "stylelint-declaration-block-no-ignored-properties": "^2.1.0",
+    "stylelint-webpack-plugin": "^1.0.4",
     "vue-template-compiler": "^2.6.10"
   },
   "gitHooks": {

@@ -1,0 +1,10 @@
+@import 'base/reboot';
+@import 'base/variables';
+@import 'base/fonts';
+@import 'base/base';
+
+#app {
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh;
+}
