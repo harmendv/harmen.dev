@@ -23,7 +23,7 @@ export default {
   description: 'Frontend developer',
   repository: {
     type: 'git',
-    url: 'https://github.com/harmendv/harmen.dev',
+    url: 'https://github.com/harmendv',
   },
   devDependencies: {
     vue: '^2.6.10',
@@ -38,12 +38,11 @@ export default {
     sketch: '^60.88103',
     figma: '^1.0.0',
     macOs: '^10.15',
-    'microsoft-windows': '^1909',
     'elementary-os': '^5.0',
   },
   dependencies: {
     wife: '^v1.0.4-14-g2414721',
-    son: '0.0.28-rc',
+    son: '0.0.32-rc',
   },
 },`,
     };
