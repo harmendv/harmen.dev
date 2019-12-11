@@ -50,7 +50,6 @@ export default {
   methods: {
     onClickMenuItem() {
       const payload = { label: this.label, path: this.to, icon: this.icon };
-      console.log(`sent: ${payload.icon}`);
       eventBus.$emit('click-menu-item', payload);
     },
   },
