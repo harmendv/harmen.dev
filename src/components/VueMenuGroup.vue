@@ -43,11 +43,6 @@ export default {
       isOpened: this.opened,
     };
   },
-  methods: {
-    toggle() {
-      console.log('test');
-    },
-  },
 };
 </script>
 
