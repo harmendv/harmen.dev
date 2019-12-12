@@ -3,7 +3,7 @@ on:
     branches:
       - master
 
-name: Build and Publish Front End Framework Website
+name: Build and Deploy
 jobs:
   FTP-Deploy-Action:
     name: FTP-Deploy-Action
