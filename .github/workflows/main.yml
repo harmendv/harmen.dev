@@ -32,3 +32,4 @@ jobs:
           FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
           LOCAL_DIR: dist
           REMOTE_DIR: domains/harmen.dev/public_html
+          ARGS: --delete --exclude-glob=domains/harmen.dev/rockbox --exclude-glob=domains/harmen.dev/rockbox/**
