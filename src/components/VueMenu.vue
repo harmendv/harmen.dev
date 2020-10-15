@@ -61,13 +61,15 @@ export default {
 
     &__mobile-button {
       display: none;
-      flex-grow: 1;
+      flex-shrink: 0;
       align-items: center;
       justify-content: center;
       width: 20px;
+      margin-left: auto;
+      background-color: var(--background);
 
       &:hover {
-        background-color: rgba(255, 255, 255, 0.1);
+        background-color: #2f3247;
       }
     }
   }

@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 html {
   height: 100%;
 }
@@ -46,7 +50,7 @@ main {
 
 @media (max-width: 600px) {
   main {
-    max-width: calc(100% - 16px);
-    margin-left: 16px;
+    max-width: calc(100% - 20px);
+    margin-left: 20px;
   }
 }
