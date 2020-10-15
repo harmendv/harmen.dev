@@ -112,6 +112,20 @@ export default {
       overflow-y: scroll;
       border: 0;
       background-color: #1e1f29;
+
+      &::-webkit-scrollbar {
+        width: 12px;
+      }
+
+      &::-webkit-scrollbar-track {
+        // box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        padding: 4px;
+        border-radius: 10px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: var(--scrollbar);
+      }
     }
   }
 }
