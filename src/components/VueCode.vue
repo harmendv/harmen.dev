@@ -4,14 +4,17 @@
       v-model="model"
       :language="language"
       :line-numbers="true"
+      :highlight="highlighter"
     />
   </div>
 </template>
 
 <script>
-import 'prismjs';
-import PrismEditor from 'vue-prism-editor';
-import 'vue-prism-editor/dist/VuePrismEditor.css';
+import { PrismEditor } from 'vue-prism-editor';
+import { highlight, languages } from 'prismjs/components/prism-core';
+import 'prismjs/components/prism-clike';
+import 'prismjs/components/prism-javascript';
+import 'vue-prism-editor/dist/prismeditor.min.css';
 
 export default {
   components: {
@@ -45,10 +48,22 @@ export default {
       },
     },
   },
+  methods: {
+    highlighter(code) {
+      return highlight(code, languages.js);
+    },
+  },
 };
 </script>
 
-<style lang="scss" >
+<style lang="scss">
+.code {
+  padding: 10px 0;
+  outline: none;
+}
+</style>
+
+<style>
 /* stylelint-disable */
 
 /**
@@ -158,7 +173,6 @@ pre[class*='language-'] {
 .token.url,
 .language-css .token.string,
 .style .token.string {
-  background: rgba(255, 255, 255, 0.04);
   color: #787d9b;
 }
 
@@ -190,5 +204,9 @@ pre[class*='language-'] {
 
 .token.entity {
   cursor: help;
+}
+
+.prism-editor__textarea {
+  outline: none;
 }
 </style>
