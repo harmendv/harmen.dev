@@ -5,10 +5,10 @@ module.exports = {
   },
   extends: ['plugin:vue/recommended', '@vue/eslint-config-airbnb'],
   rules: {
-    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    'no-unused-vars': process.env.NODE_ENV === 'production' ? 'error' : 'warn',
-    'max-len': process.env.NODE_ENV === 'production' ? 'error' : 'warn',
+    'no-console': process.env.NODE_ENV === 'development' ? 'off' : 'error',
+    'no-debugger': process.env.NODE_ENV === 'development' ? 'off' : 'error',
+    'no-unused-vars': process.env.NODE_ENV === 'development' ? 'warn' : 'error',
+    'max-len': process.env.NODE_ENV === 'development' ? 'warn' : 'error',
     'no-restricted-syntax': 0,
     'global-require': 0,
     'import/no-dynamic-require': 0,
@@ -23,8 +23,5 @@ module.exports = {
   },
   parserOptions: {
     parser: 'babel-eslint',
-  },
-  globals: {
-    _: 'readonly',
   },
 };

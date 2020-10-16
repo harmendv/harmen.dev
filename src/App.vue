@@ -110,15 +110,9 @@ export default {
       // Go to the previous index in the array
       const path = this.openFiles[index - 1]
         ? this.openFiles[index - 1].path : this.openFiles[0].path;
-      this.viewPath(path);
+      // Go to path
+      if (path !== this.$route.path) this.$router.push({ path });
     });
-  },
-  methods: {
-    viewPath(p) {
-      this.$router.push({
-        path: p,
-      });
-    },
   },
 };
 </script>

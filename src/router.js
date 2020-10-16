@@ -2,7 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 
 // Routes with code splitting
-const Index = () => import(/* webpackChunkName: "view-index" */'@/views/Index.vue');
+const PackageJson = () => import(/* webpackChunkName: "view-package-json" */'@/views/PackageJson.vue');
 const GitIgnore = () => import(/* webpackChunkName: "view-gitignore" */'@/views/GitIgnore.vue');
 const Eslint = () => import(/* webpackChunkName: "view-eslint" */'@/views/Eslint.vue');
 const Babel = () => import(/* webpackChunkName: "view-babel" */'@/views/Babel.vue');
@@ -19,7 +19,7 @@ export default new Router({
     {
       path: '/',
       name: 'index',
-      component: Index,
+      component: PackageJson,
       meta: {
         label: 'package.json',
         icon: 'file',

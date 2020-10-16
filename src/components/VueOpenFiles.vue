@@ -5,7 +5,7 @@
       :key="index"
       class="open-file"
       :class="{'is-active': file.path === $route.path }"
-      @click.self="$router.push({ path: file.path })"
+      @click.self="onClickFile(file)"
     >
       <vue-icon
         :name="file.icon"
@@ -41,6 +41,9 @@ export default {
     onClickClose(file) {
       eventBus.$emit('close-file', { ...file });
     },
+    onClickFile(file) {
+      if (file.path !== this.$route.path) this.$router.push({ path: file.path });
+    },
   },
 };
 </script>
@@ -52,6 +55,21 @@ export default {
   flex-shrink: 0;
   height: 41px;
   overflow: hidden;
+  overflow-x: auto;
+
+  &::-webkit-scrollbar {
+    height: 5px;
+  }
+
+  &::-webkit-scrollbar-track {
+    // box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    padding: 4px;
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--scrollbar);
+  }
 
   .open-file {
     flex-shrink: 0;
