@@ -61,27 +61,40 @@ export default {
 
     &__mobile-button {
       display: none;
+      flex-grow: 0;
       flex-shrink: 0;
       align-items: center;
       justify-content: center;
       width: 20px;
       margin-left: auto;
       background-color: var(--background);
+      cursor: pointer;
 
       &:hover {
-        background-color: #2f3247;
+        background-color: #2d2f3c;
       }
     }
   }
 
   @media (max-width: 600px) {
     .menu {
+      $self: &;
+
       position: fixed;
       top: 0;
-      margin-left: calc((var(--menu-width) * -1) + 16px);
+      margin-left: calc((var(--menu-width) * -1) + 20px);
+      transition: margin-left 0.2s;
 
       &--open {
         margin-left: 0;
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+        #{$self}__mobile-button {
+          background-color: #1e1f29;
+
+          &:hover {
+            background-color: #2d2f3c;
+          }
+        }
       }
 
       &__mobile-button {

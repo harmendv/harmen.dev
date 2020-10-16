@@ -16,36 +16,78 @@ export default {
   },
   data() {
     return {
-      code: `{
+      code: `module.exports = {
   root: true,
   env: {
+    browser: true,
+    es2020: true,
     node: true,
   },
-  extends: ['plugin:vue/recommended', '@vue/eslint-config-airbnb'],
+  ignorePatterns: [
+    '**/node_modules/**/*.{js, vue}',
+    '**/dist/**/*.js',
+  ],
+  extends: [
+    'plugin:vue/recommended',
+    'airbnb-base',
+  ],
+  parserOptions: {
+    ecmaVersion: 11,
+    sourceType: 'module',
+  },
+  plugins: [
+    'vue',
+  ],
   rules: {
-    'no-console': 'process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    'no-debugger': 'process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    'no-unused-vars': 'process.env.NODE_ENV === 'production' ? 'error' : 'warn',
-    'max-len': 'process.env.NODE_ENV === 'production' ? 'error' : 'warn',
+    indent: [
+      'error',
+      2,
+    ],
+    'linebreak-style': [
+      'error',
+      'unix',
+    ],
+    quotes: [
+      'error',
+      'single',
+    ],
+    'quote-props': [
+      'error',
+      'as-needed',
+    ],
+    semi: [
+      'error',
+      'always',
+    ],
+    'no-console': 'error',
+    'no-debugger': 'error',
+    'no-unused-vars': 'error',
+    'no-unreachable': 'error',
     'no-restricted-syntax': 0,
+    'no-new': 0,
     'global-require': 0,
     'import/no-dynamic-require': 0,
-    'no-param-reassign': [
-      'error',
-      {
-        props: false,
-      },
-    ],
+    'import/no-extraneous-dependencies': 0,
+    'no-param-reassign': ['error', {
+      props: false,
+    }],
     'class-methods-use-this': 0,
-    'func-names': ['error', 'as-needed'],
+    'no-alert': 0,
+    'vue/custom-event-name-casing': 0,
+    'vue/no-mutating-props': 0,
   },
-  parserOptions: {
-    parser: 'babel-eslint',
-  },
-  globals: {
-    _: 'readonly',
-  },
-},`,
+  overrides: [
+    {
+      files: [
+        '**/*.spec.js',
+        '**/*.spec.jsx',
+      ],
+      env: {
+        jest: true,
+      },
+    },
+  ],
+};`,
     };
   },
 };

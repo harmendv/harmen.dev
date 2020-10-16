@@ -45,7 +45,9 @@
           name="fade"
           mode="out-in"
         >
-          <router-view />
+          <keep-alive>
+            <router-view />
+          </keep-alive>
         </transition>
       </div>
       <vue-terminal />
@@ -74,7 +76,10 @@ export default {
   },
   data() {
     return {
-      openFiles: [],
+      openFiles: [
+        { label: 'package.json', path: '/', icon: 'file' },
+        { label: 'README.md', path: '/readme', icon: 'file-text' },
+      ],
     };
   },
   watch: {
@@ -89,7 +94,7 @@ export default {
         });
         // Add files
         if (!openFilesContainsPathOnLoad && to.meta.label) {
-          this.openFiles.push({ label: to.meta.label, path: to.path, icon: to.meta.icon });
+          this.openFiles.unshift({ label: to.meta.label, path: to.path, icon: to.meta.icon });
         }
       },
       immediate: true,

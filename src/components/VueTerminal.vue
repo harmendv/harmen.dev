@@ -5,7 +5,7 @@
   >
     <div
       class="terminal-header"
-      @click="opened = !opened"
+      @click="toggleHeader"
     >
       <vue-icon
         name="terminal"
@@ -13,17 +13,18 @@
       />
     </div>
     <vue-command
-      v-if="opened"
-      :yargs-options="{ alias: { color: ['colour'] } }"
+      v-show="opened"
       :commands="commands"
+      prompt="~guest@harmen.dev:"
+      intro="Welcome at harmen.dev"
       hide-bar
-      prompt="~you@harmen.dev"
+      show-intro
     />
   </div>
 </template>
 
 <script>
-import VueCommand from 'vue-command';
+import VueCommand, { createStdout } from 'vue-command';
 import VueIcon from '@/components/VueIcon.vue';
 import 'vue-command/dist/vue-command.css';
 
@@ -34,44 +35,55 @@ export default {
   },
   data() {
     return {
-      intro: 'Welcome to harmen.dev<br />Type <em>help</em> to list the available commands.',
-      opened: false,
+      opened: true,
       commands: {
-        // yargs arguments
-        help: () => 'Available commands: <br/> help rockbox play',
-        about: () => 'about time to <a target="_blank" href="https://www.youtube.com/watch?v=oEGL7j2LN84">click here.</a>',
-        rockbox: () => {
-          setTimeout(() => {
-            window.open('http://rockbox.harmen.dev', '_blank');
-          }, 2000);
-          return 'Opening rockbox.harmen.dev';
+        cd: (val) => {
+          if (val._[1]) return createStdout(`cd: no such file or directory: ${val._[1]}`);
+          return createStdout('');
         },
-        clear: () => {
-          this.opened = false; setTimeout(() => { this.opened = true; }, 1);
+        pwd: () => createStdout('/mnt/domains/harmen.dev'),
+        open: (val) => {
+          if (val._[1] && this.$router.resolve({ name: val._[1] })) {
+            this.$router.push({ name: val._[1] });
+          }
+          return createStdout('');
         },
-        play: ({ _ }) => {
-          const list = {
-            hotel: 'https://www.youtube.com/watch?v=1p7C1Qa2C2Y',
-            blues: 'https://www.youtube.com/watch?v=V6aZZFnZUVk',
-            sephora: 'https://www.youtube.com/watch?v=IyXQmi-94Dg',
-            minor: 'https://www.youtube.com/watch?v=UGCxrt7Gcb4',
-          };
-          if (_[1] === 'list') {
-            return Object.keys(list).toString();
+        npm: (val) => {
+          const firstArgument = val._[1] ?? false;
+          const secondArgument = val._[2] ?? false;
+
+          if (firstArgument && !secondArgument) {
+            if (firstArgument === 'run') {
+              return createStdout('Scripts available in harmen.dev via `npm run-script`:<br/>   lint, lint:js, lint:css');
+            }
+            return createStdout(`Unknown command: npm ${firstArgument}`);
           }
-          if (Array.from(Object.keys(list)).includes(_[1])) {
-            setTimeout(() => {
-              window.open(list[_[1]], '_blank');
-            }, 2000);
-            return `Opening '${_[1]}' in a new window with uri <a href="${list[_[1]]}">${list[_[1]]}</a>`;
+
+          if (firstArgument && secondArgument) {
+            if (firstArgument === 'run') {
+              if (secondArgument === 'lint:css') {
+                return createStdout('Stylelint: No problems found.');
+              }
+              if (secondArgument === 'lint:js') {
+                return createStdout('Eslint: No problems found.');
+              }
+              if (secondArgument === 'lint') {
+                return createStdout('Eslint: No problems found.<br/>Stylelint: No problems found.');
+              }
+              return createStdout(`Unknown command: npm ${firstArgument} ${secondArgument}`);
+            }
+            return createStdout(`Unknown command: npm ${firstArgument} ${secondArgument}`);
           }
-          return 'Use \'play &lt;name&gt;\'. Use \'play list\' to see all available play alongs.';
+
+          return createStdout('Usage: npm command<br /><br/> where command is one of<br /> - run<br />');
         },
       },
     };
   },
   methods: {
-
+    toggleHeader() {
+      this.opened = !this.opened;
+    },
   },
 };
 </script>
@@ -104,6 +116,13 @@ export default {
 
     .term-cont {
       padding: 5px 10px;
+    }
+
+    .term-ps {
+      display: inline-flex;
+      align-items: center;
+      margin-right: 0.5rem;
+      line-height: 14px;
     }
 
     .term-std {

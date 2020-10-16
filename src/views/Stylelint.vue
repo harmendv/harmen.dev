@@ -13,10 +13,10 @@ export default {
   },
   data() {
     return {
-      code: `{
+      code: `module.exports = {
   extends: [
     'stylelint-config-standard', // Load the standard stylelint configuration
-    'stylelint-config-property-sort-order-smacss', // Reorder the css according to the smacss standards
+    'stylelint-config-rational-order',
   ],
   plugins: [
     'stylelint-declaration-block-no-ignored-properties', // This plugin checks for ignored properties and throws error if so
@@ -35,7 +35,7 @@ export default {
     'media-feature-name-no-unknown': true, // Only known media features can be used
     'plugin/declaration-block-no-ignored-properties': true, // Disallow property values that are ignored due to another property value in the same rule
   },
-},`,
+};`,
     };
   },
 };

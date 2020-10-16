@@ -27,6 +27,11 @@ export default {
           type: 'git',
           url: 'https://github.com/harmendv',
         },
+        scripts: {
+          lint: 'npm run lint:js && npm run lint:css',
+          'lint:js': 'eslint . --ext .js,.vue --config .eslintrc.js --fix',
+          'lint:css': 'stylelint ./**/*.{vue,scss} --fix',
+        },
         devDependencies: {
           '@babel/core': '@latest',
           '@testing-library/vue': '@latest',
