@@ -22,6 +22,6 @@ module.exports = {
     'func-names': ['error', 'as-needed'],
   },
   parserOptions: {
-    parser: 'babel-eslint',
+    parser: '@babel/eslint-parser',
   },
 };
