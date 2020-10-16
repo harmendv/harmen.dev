@@ -48,6 +48,11 @@ export default {
       },
     },
   },
+  watch: {
+    code(val) {
+      this.changedCode = val;
+    },
+  },
   methods: {
     highlighter(code) {
       return highlight(code, languages.js);
