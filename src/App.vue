@@ -18,8 +18,8 @@
           icon="settings"
         />
         <vue-menu-item
-          to="/valet"
-          label="LocalValetDriver.php"
+          to="/tsconfig"
+          label="tsconfig.json"
           icon="code"
         />
         <vue-menu-item

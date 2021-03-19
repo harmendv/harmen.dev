@@ -14,6 +14,7 @@
     </div>
     <vue-command
       v-show="opened"
+      ref="command"
       :commands="commands"
       prompt="~guest@harmen.dev:"
       intro="Welcome at harmen.dev"
@@ -35,7 +36,7 @@ export default {
   },
   data() {
     return {
-      opened: true,
+      opened: false,
       commands: {
         cd: (val) => {
           if (val._[1]) return createStdout(`cd: no such file or directory: ${val._[1]}`);
@@ -79,6 +80,15 @@ export default {
         },
       },
     };
+  },
+  watch: {
+    opened(state) {
+      if (state) {
+        this.$nextTick(() => {
+          this.$refs.command.focus();
+        });
+      }
+    },
   },
   methods: {
     toggleHeader() {
