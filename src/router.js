@@ -7,7 +7,7 @@ const GitIgnore = () => import(/* webpackChunkName: "view-gitignore" */'@/views/
 const Eslint = () => import(/* webpackChunkName: "view-eslint" */'@/views/Eslint.vue');
 const Babel = () => import(/* webpackChunkName: "view-babel" */'@/views/Babel.vue');
 const Stylelint = () => import(/* webpackChunkName: "view-stylelint" */'@/views/Stylelint.vue');
-const Valet = () => import(/* webpackChunkName: "view-valet" */'@/views/Valet.vue');
+const Tsconfig = () => import(/* webpackChunkName: "view-tsconfig" */'@/views/Tsconfig.vue');
 const Readme = () => import(/* webpackChunkName: "view-readme" */'@/views/Readme.vue');
 
 Vue.use(Router);
@@ -62,11 +62,11 @@ export default new Router({
       },
     },
     {
-      path: '/valet',
-      name: 'valet',
-      component: Valet,
+      path: '/tsconfig',
+      name: 'tsconfig',
+      component: Tsconfig,
       meta: {
-        label: 'LocalValetDriver.php',
+        label: 'tsconfig.json',
         icon: 'code',
       },
     },

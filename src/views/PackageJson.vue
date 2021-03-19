@@ -28,16 +28,13 @@ export default {
           url: 'https://github.com/harmendv',
         },
         scripts: {
-          lint: 'npm run lint:js && npm run lint:css',
-          'lint:js': 'eslint . --ext .js,.vue --config .eslintrc.js --fix',
-          'lint:css': 'stylelint ./**/*.{vue,scss} --fix',
+          build: 'npm ruin build',
         },
         devDependencies: {
           '@babel/core': '@latest',
           '@testing-library/vue': '@latest',
           '@testing-library/jest-dom': '@latest',
           vue: '@latest',
-          webpack: '@latest',
           rollup: '@latest',
           eslint: '@latest',
           stylelint: '@latest',
