@@ -23,7 +23,6 @@
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-plugin-vue": "^7.0.1",
     "feather-icons": "^4.24.1",
-    "lint-staged": "^10.4.0",
     "lodash": "^4.17.15",
     "prismjs": "^1.17.1",
     "raw-loader": "^4.0.2",
@@ -41,13 +40,5 @@
     "vue-router": "^3.0.3",
     "vue-template-compiler": "^2.6.12",
     "vuex": "^3.0.1"
-  },
-  "gitHooks": {
-    "pre-commit": "lint-staged"
-  },
-  "lint-staged": {
-    "*.{js,vue}": [
-      "vue-cli-service lint"
-    ]
   }
 }
