@@ -2,6 +2,7 @@
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 
 module.exports = {
+  publicPath: '',
   devServer: {
     before: (app) => {
       app.set('etag', 'strong');
