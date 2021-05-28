@@ -1,2 +1,2 @@
 (window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["view-readme"],{ffd4:function(e,n,a){"use strict";a.r(n);var t=function(){var e=this,n=e.$createElement,a=e._self._c||n;return a("div",[a("vue-code",{attrs:{code:e.code,language:"md"}})],1)},d=[],o=a("d1e8"),c={components:{VueCode:o["a"]},data:function(){return{code:"# harmen.dev\n[E-mail](mailto:mail@harmen.dev)"}}},r=c,u=a("2877"),l=Object(u["a"])(r,t,d,!1,null,null,null);n["default"]=l.exports}}]);
-//# sourceMappingURL=view-readme.119b405c.js.map
+//# sourceMappingURL=view-readme.8570d9fc.js.map
