@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["icon-feather-square-svg"],{"9e9c":function(e,r,t){"use strict";t.r(r),r["default"]='<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-square"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect></svg>'}}]);
+//# sourceMappingURL=icon-feather-square-svg.f75666da.js.map
