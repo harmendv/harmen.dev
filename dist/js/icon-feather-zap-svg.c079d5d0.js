@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["icon-feather-zap-svg"],{"3cae":function(o,e,n){"use strict";n.r(e),e["default"]='<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-zap"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>'}}]);
+//# sourceMappingURL=icon-feather-zap-svg.c079d5d0.js.map

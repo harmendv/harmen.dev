@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["view-tsconfig"],{"5d44":function(e,n,t){"use strict";t.r(n);var c=function(){var e=this,n=e.$createElement,t=e._self._c||n;return t("div",[t("vue-code",{attrs:{code:e.code,language:"php"}})],1)},o=[],s=t("d1e8"),u={components:{VueCode:s["a"]},data:function(){return{code:'{\n  "compilerOptions": {\n    "target": "es2018",\n  },\n  "include": ["./src/**/*.ts"]\n}\n'}}},a=u,r=t("2877"),d=Object(r["a"])(a,c,o,!1,null,null,null);n["default"]=d.exports}}]);
+//# sourceMappingURL=view-tsconfig.f26baa0e.js.map

@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["icon-feather-chevron-down-svg"],{"0b0c":function(o,e,n){"use strict";n.r(e),e["default"]='<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>'}}]);
+//# sourceMappingURL=icon-feather-chevron-down-svg.11d863da.js.map
