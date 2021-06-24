@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "publish": "git subtree push --prefix dist origin gh-pages",
+    "build": "vue-cli-service build && cp CNAME dist",
+    "publish": "git push origin --delete gh-pages && git subtree push --prefix dist origin gh-pages",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
