@@ -1,21 +1,3 @@
-# harmen.dev
+### 🤓 harmen.dev
 
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
+visit at [harmen.dev](https://harmen.dev). Hosted on [GitHub pages](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site) with the help of a [gh-pages branch](https://gist.github.com/cobyism/4730490).
