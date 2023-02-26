@@ -7,7 +7,9 @@
                 <h2 class="portfolio-card__job-title">{{ jobTitle }}</h2>
             </div>
             <div class="portfolio-card__header-buttons">
-                <button class="portfolio-card__button" type="button" @click="goToGithub">GitHub</button>
+                <button class="portfolio-card__button" type="button" @click="goToGithub">
+                    <img class="portfolio-card__button-icon" src="../assets/icons/github.svg" alt=""> GitHub
+                </button>
             </div>
         </div>
         <div class="portfolio-card__content">
@@ -30,12 +32,16 @@ export default {
         githubUrl: {
             type: String,
             required: true,
-        }
+        },
     },
     methods: {
         goToGithub() {
             window.open(this.githubUrl, '_blank');
         }
+    },
+    emits: ['mounted'],
+    mounted() {
+        this.$emit('mounted');
     }
 };
 </script>
@@ -43,9 +49,12 @@ export default {
 <style lang="scss">
 .portfolio-card {
     background: #fff;
-    border: 1px solid #e4e4e4;
+    border: 1px solid #cecece;
     border-radius: 8px;
-    box-shadow: 0 3px 15px rgba(0,0,0,0.07);
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.07);
+    transform: perspective(1000px) translateZ(0);
+    backface-visibility: hidden;
+    transition: all .8s ease;
 
     &__header {
         padding: 1rem;
@@ -53,34 +62,43 @@ export default {
         display: flex;
         align-items: center;
     }
+
     &__avatar {
         width: 60px;
         height: 60px;
         border-radius: 100%;
     }
+
     &__info {
         margin: 0 1rem;
         margin-right: auto;
     }
+
     &__name {
         all: unset;
         display: block;
         font-weight: 700;
     }
+
     &__job-title {
         all: unset;
         display: block;
         font-size: .875rem;
     }
+
     &__content {
         padding: 1rem;
         display: flex;
         flex-direction: column;
         gap: 1rem;
+        background-color: rgb(245 245 245 / 50%);
+        border-radius: 0 0 8px 8px;
     }
+
     &__header-buttons {
         margin-left: 2rem;
     }
+
     &__button {
         all: unset;
         border: 1px solid #BEBEBE;
@@ -88,9 +106,19 @@ export default {
         border-radius: 5px;
         font-size: .875rem;
         cursor: pointer;
+        display: flex;
+        align-items: center;
+        transition: .1s all;
+
+        &-icon {
+            width: .875rem;
+            height: .875rem;
+            margin-right: .25rem;
+        }
 
         &:hover {
             border: 1px solid #676767;
+            box-shadow: 0 3px 7px rgba(0, 0, 0, 0.1);
         }
     }
 }
