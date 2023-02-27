@@ -74,6 +74,7 @@ export default {
         width: 60px;
         height: 60px;
         border-radius: 100%;
+        user-select: none;
     }
 
     &__info {
