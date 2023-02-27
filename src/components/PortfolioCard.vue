@@ -8,7 +8,7 @@
             </div>
             <div class="portfolio-card__header-buttons">
                 <button class="portfolio-card__button" type="button" @click="goToGithub">
-                    <img class="portfolio-card__button-icon" src="../assets/icons/github.svg" alt=""> GitHub
+                    <lv-icon name="github" push=".25"/> GitHub
                 </button>
             </div>
         </div>
@@ -19,7 +19,12 @@
 </template>
 
 <script>
+import { LvIcon } from '@libvue/core';
+
 export default {
+    components: {
+        LvIcon,
+    },
     props: {
         name: {
             type: String,
@@ -34,6 +39,7 @@ export default {
             required: true,
         },
     },
+
     methods: {
         goToGithub() {
             window.open(this.githubUrl, '_blank');
@@ -48,17 +54,18 @@ export default {
 
 <style lang="scss">
 .portfolio-card {
-    background: #fff;
-    border: 1px solid #cecece;
+    background: var(--background-color);
+    border: 1px solid var(--border-color);
     border-radius: 8px;
     box-shadow: 0 3px 15px rgba(0, 0, 0, 0.07);
     transform: perspective(1000px) translateZ(0);
-    backface-visibility: hidden;
-    transition: all .8s ease;
+    backface-visibility: visible;
+    transition: all .1s ease;
+    color: var(--text-color);
 
     &__header {
         padding: 1rem;
-        border-bottom: 1px solid #e4e4e4;
+        border-bottom: 1px solid var(--border-color);
         display: flex;
         align-items: center;
     }
@@ -83,7 +90,7 @@ export default {
     &__job-title {
         all: unset;
         display: block;
-        font-size: .875rem;
+        font-size: .75rem;
     }
 
     &__content {
@@ -91,7 +98,7 @@ export default {
         display: flex;
         flex-direction: column;
         gap: 1rem;
-        background-color: rgb(245 245 245 / 50%);
+        background: var(--border-color-light);
         border-radius: 0 0 8px 8px;
     }
 
@@ -101,7 +108,7 @@ export default {
 
     &__button {
         all: unset;
-        border: 1px solid #BEBEBE;
+        border: 1px solid var(--border-color);
         padding: .5rem;
         border-radius: 5px;
         font-size: .875rem;

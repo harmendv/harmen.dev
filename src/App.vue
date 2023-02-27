@@ -1,4 +1,5 @@
 <template>
+    <lv-theme-toggle class="theme-toggle" v-model="theme"></lv-theme-toggle>
     <transition name="fade">
         <portfolio-card v-show="visible" @mounted="onMountedPortfolioCard" name="Harmen de Vries" job-title="front-end developer" github-url="https://github.com/harmendv">
             <repository-info
@@ -9,39 +10,61 @@
                 docs-url="https://libvue.github.io/core/#/docs/install"
             />
             <repository-info :image-url="LibvueLogo" title="@libvue/laravel-orion-api"
-                             description="Laravel Orion Javascript Intergration"
+                             description="Laravel Orion JS Intergration"
                              github-url="https://github.com/libvue/laravel-orion-api#laravel-orion-api"/>
         </portfolio-card>
     </transition>
 </template>
 
 <script>
+import { LvThemeToggle } from '@libvue/core';
 import PortfolioCard from "./components/PortfolioCard.vue";
 import RepositoryInfo from "./components/RepositoryInfo.vue";
 import LibvueLogo from './assets/libvue-logo.png';
 
 export default {
     components: {
+        LvThemeToggle,
         PortfolioCard,
         RepositoryInfo
     },
     data() {
         return {
+            theme: this.preferredColorScheme(),
             visible: false,
             LibvueLogo
         };
     },
+    mounted() {
+        if (localStorage.getItem('theme')) {
+            this.theme = localStorage.getItem('theme');
+            document.body.setAttribute('data-theme', this.theme);
+        }
+    },
+    watch: {
+        theme(val) {
+            document.body.setAttribute('data-theme', val);
+            localStorage.setItem('theme', val);
+        },
+    },
     methods: {
+        preferredColorScheme() {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                return 'dark';
+            }
+            return 'light';
+        },
         onMountedPortfolioCard() {
             setTimeout(() => {
                 this.visible = true;
-            }, 100)
+            }, 30)
         }
     }
 };
 </script>
 
 <style lang="scss">
+@import '@libvue/core';
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
 
 html {
@@ -51,13 +74,13 @@ html {
 
 body {
     margin: 0;
-    padding: 0;
-    background: #f1f1f1;
+    padding: 2rem;
+    background: var(--background-color);
     display: flex;
     align-items: center;
     justify-content: center;
     min-height: 100%;
-
+    flex-direction: row;
 }
 
 ::selection {
@@ -65,6 +88,12 @@ body {
 }
 ::-moz-selection {
     background: #e4eae4;
+}
+
+.theme-toggle {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
 }
 
 .fade-enter-active,

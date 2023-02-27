@@ -8,10 +8,10 @@
             </div>
             <div class="repository-info__buttons">
                 <button class="repository-info__button" @click="goToDocs" v-if="docsUrl">
-                    <img class="repository-info__button-icon" src="../assets/icons/book.svg" alt="">
+                    <lv-icon name="book"/>
                 </button>
                 <button class="repository-info__button" @click="goToGithub" v-if="githubUrl">
-                    <img class="repository-info__button-icon" src="../assets/icons/github.svg" alt="">
+                    <lv-icon name="github"/>
                 </button>
             </div>
         </div>
@@ -19,7 +19,12 @@
 </template>
 
 <script>
+import { LvIcon } from '@libvue/core';
+
 export default {
+    components: {
+        LvIcon,
+    },
     props: {
         imageUrl: {
             type: String,
@@ -55,13 +60,14 @@ export default {
 
 <style lang="scss">
 .repository-info {
-    border: 1px solid #DCDCDC;
+    border: 1px solid var(--border-color);
     border-radius: 6px;
     padding: .5rem;
     display: flex;
     align-items: center;
-    transition: .2s all;
-    background: #fff;
+    transition: .1s all;
+    background: var(--background-color);
+    color: var(--text-color);
 
     &__icon {
         width: 30px;
@@ -95,7 +101,7 @@ export default {
 
     &__button {
         all: unset;
-        border: 1px solid #BEBEBE;
+        border: 1px solid var(--border-color);
         padding: .5rem;
         border-radius: 5px;
         font-size: .875rem;
@@ -103,6 +109,7 @@ export default {
         display: flex;
         align-items: center;
         transition: .1s all;
+        color: var(--text-color);
 
         &-icon {
             width: .875rem;
