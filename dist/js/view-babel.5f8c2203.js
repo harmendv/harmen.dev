@@ -1,2 +1,0 @@
-(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["view-babel"],{"55cb":function(e,n,t){"use strict";t.r(n);var o=function(){var e=this,n=e.$createElement,t=e._self._c||n;return t("div",[t("vue-code",{attrs:{code:e.code,language:"js"}})],1)},u=[],c=t("d1e8"),a={components:{VueCode:c["a"]},data:function(){return{code:"module.exports = {\n  presets: [\n    '@vue/cli-plugin-babel/preset',\n  ],\n};\n"}}},l=a,s=t("2877"),r=Object(s["a"])(l,o,u,!1,null,null,null);n["default"]=r.exports}}]);
-//# sourceMappingURL=view-babel.5f8c2203.js.map

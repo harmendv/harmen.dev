@@ -1,136 +1,110 @@
 <template>
-  <div id="app">
-    <vue-menu>
-      <vue-menu-group title="harmen.dev">
-        <vue-menu-item
-          to="/eslint"
-          label=".eslintrc.js"
-          icon="settings"
-        />
-        <vue-menu-item
-          to="/gitignore"
-          label=".gitignore"
-          icon="github"
-        />
-        <vue-menu-item
-          to="/babel"
-          label="babel.config.js"
-          icon="settings"
-        />
-        <vue-menu-item
-          to="/tsconfig"
-          label="tsconfig.json"
-          icon="code"
-        />
-        <vue-menu-item
-          to="/"
-          label="package.json"
-        />
-        <vue-menu-item
-          to="/readme"
-          icon="file-text"
-          label="README.md"
-        />
-        <vue-menu-item
-          to="/stylelint"
-          label="stylelint.config.js"
-          icon="settings"
-        />
-      </vue-menu-group>
-    </vue-menu>
-    <main>
-      <vue-open-files :files="openFiles" />
-      <div class="content">
-        <transition
-          name="fade"
-          mode="out-in"
-        >
-          <keep-alive>
-            <router-view />
-          </keep-alive>
-        </transition>
-      </div>
-      <vue-terminal />
-    </main>
-  </div>
+    <lv-theme-toggle class="theme-toggle" v-model="theme"></lv-theme-toggle>
+    <transition name="fade">
+        <portfolio-card v-show="visible" @mounted="onMountedPortfolioCard" name="Harmen de Vries" job-title="front-end developer" github-url="https://github.com/harmendv">
+            <repository-info
+                :image-url="LibvueLogo"
+                title="@libvue/core"
+                description="Vue3 component library"
+                github-url="https://github.com/libvue/core#a-collection-of-vue-3-components"
+                docs-url="https://libvue.github.io/core/#/docs/install"
+            />
+            <repository-info :image-url="LibvueLogo" title="@libvue/laravel-orion-api"
+                             description="Laravel Orion JS Intergration"
+                             github-url="https://github.com/libvue/laravel-orion-api#laravel-orion-api"/>
+        </portfolio-card>
+    </transition>
 </template>
 
 <script>
-import '@/assets/sass/app.scss';
-
-import VueMenu from '@/components/VueMenu.vue';
-import VueMenuItem from '@/components/VueMenuItem.vue';
-import VueMenuGroup from '@/components/VueMenuGroup.vue';
-import VueOpenFiles from '@/components/VueOpenFiles.vue';
-import VueTerminal from '@/components/VueTerminal.vue';
-
-import eventBus from '@/utils/eventBus';
+import { LvThemeToggle } from '@libvue/core';
+import PortfolioCard from "./components/PortfolioCard.vue";
+import RepositoryInfo from "./components/RepositoryInfo.vue";
+import LibvueLogo from './assets/libvue-logo.png';
 
 export default {
-  components: {
-    VueMenu,
-    VueMenuItem,
-    VueMenuGroup,
-    VueOpenFiles,
-    VueTerminal,
-  },
-  data() {
-    return {
-      openFiles: [
-        { label: 'package.json', path: '/', icon: 'file' },
-        { label: 'README.md', path: '/readme', icon: 'file-text' },
-      ],
-    };
-  },
-  watch: {
-    $route: {
-      handler(to) {
-        // On mount check the path and add it
-        let openFilesContainsPathOnLoad = false;
-        this.openFiles.forEach((file) => {
-          if (file.path === to.path) {
-            openFilesContainsPathOnLoad = true;
-          }
-        });
-        // Add files
-        if (!openFilesContainsPathOnLoad && to.meta.label) {
-          this.openFiles.unshift({ label: to.meta.label, path: to.path, icon: to.meta.icon });
-        }
-      },
-      immediate: true,
+    components: {
+        LvThemeToggle,
+        PortfolioCard,
+        RepositoryInfo
     },
-  },
-  mounted() {
-    // On closing a file
-    eventBus.$on('close-file', (data) => {
-      // Find the index of the file and remove it
-      let index = false;
-      this.openFiles.forEach((file, i) => {
-        if (file.label === data.label) {
-          index = i;
+    data() {
+        return {
+            theme: this.preferredColorScheme(),
+            visible: false,
+            LibvueLogo
+        };
+    },
+    mounted() {
+        if (localStorage.getItem('theme')) {
+            this.theme = localStorage.getItem('theme');
+            document.body.setAttribute('data-theme', this.theme);
         }
-      });
-      // Remove the index from the array
-      this.openFiles.splice(index, 1);
-      // Go to the previous index in the array
-      const path = this.openFiles[index - 1]
-        ? this.openFiles[index - 1].path : this.openFiles[0].path;
-      // Go to path
-      if (path !== this.$route.path) this.$router.push({ path });
-    });
-  },
+    },
+    watch: {
+        theme(val) {
+            document.body.setAttribute('data-theme', val);
+            localStorage.setItem('theme', val);
+        },
+    },
+    methods: {
+        preferredColorScheme() {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                return 'dark';
+            }
+            return 'light';
+        },
+        onMountedPortfolioCard() {
+            setTimeout(() => {
+                this.visible = true;
+            }, 30)
+        }
+    }
 };
 </script>
 
-<style>
-.fade-enter-active,
-.fade-leave-active {
-  transition: all 0.03s;
+<style lang="scss">
+@import '@libvue/core';
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+html {
+    height: 100%;
+    font-family: 'Inter', sans-serif;
 }
 
-.fade-enter,
-.fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-  transform: translateY(10px);
-  opacity: 0;
+body {
+    margin: 0;
+    padding: 2rem;
+    background: var(--background-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100%;
+    flex-direction: row;
+}
+
+::selection {
+    background: #e4eae4;
+}
+::-moz-selection {
+    background: #e4eae4;
+}
+
+.theme-toggle {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+    transition: all .8s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+    opacity: 0;
+    transform: translateZ(0) perspective(1000px) translate(0, -80px) scale(0.95) rotate3d(1, 0, 0, 20deg);
+
 }
 </style>
