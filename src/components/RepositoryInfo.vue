@@ -1,17 +1,29 @@
 <template>
     <transition>
         <div class="repository-info">
-            <img class="repository-info__icon" :src="imageUrl" alt="">
+            <img
+                class="repository-info__icon"
+                :src="imageUrl"
+                alt=""
+            />
             <div class="repository-info__info">
                 <h2 class="repository-info__title">{{ title }}</h2>
                 <h3 class="repository-info__description">{{ description }}</h3>
             </div>
             <div class="repository-info__buttons">
-                <button class="repository-info__button" @click="goToDocs" v-if="docsUrl">
-                    <lv-icon name="book"/>
+                <button
+                    class="repository-info__button"
+                    @click="goToDocs"
+                    v-if="docsUrl"
+                >
+                    <lv-icon name="book" />
                 </button>
-                <button class="repository-info__button" @click="goToGithub" v-if="githubUrl">
-                    <lv-icon name="github"/>
+                <button
+                    class="repository-info__button"
+                    @click="goToGithub"
+                    v-if="githubUrl"
+                >
+                    <lv-icon name="github" />
                 </button>
             </div>
         </div>
@@ -19,7 +31,7 @@
 </template>
 
 <script>
-import { LvIcon } from '@libvue/core';
+import { LvIcon } from "@libvue/core";
 
 export default {
     components: {
@@ -28,33 +40,33 @@ export default {
     props: {
         imageUrl: {
             type: String,
-            default: '',
+            default: "",
         },
         title: {
             type: String,
-            default: '',
+            default: "",
         },
         description: {
             type: String,
-            default: '',
+            default: "",
         },
         docsUrl: {
             type: String,
-            required: true,
+            default: "",
         },
         githubUrl: {
             type: String,
-            default: '',
-        }
+            default: "",
+        },
     },
     methods: {
         goToGithub() {
-            window.open(this.githubUrl, '_blank')
+            window.open(this.githubUrl, "_blank");
         },
         goToDocs() {
-            window.open(this.docsUrl, '_blank')
-        }
-    }
+            window.open(this.docsUrl, "_blank");
+        },
+    },
 };
 </script>
 
@@ -62,17 +74,17 @@ export default {
 .repository-info {
     border: 1px solid var(--border-color);
     border-radius: 6px;
-    padding: .5rem;
+    padding: 0.5rem;
     display: flex;
     align-items: center;
-    transition: .1s all;
+    transition: 0.1s all;
     background: var(--background-color);
     color: var(--text-color);
 
     &__icon {
-        width: 30px;
-        height: 30px;
-        margin-right: .5rem;
+        width: 39px;
+        height: 39px;
+        margin-right: 0.7rem;
         border-radius: 4px;
     }
 
@@ -84,36 +96,36 @@ export default {
     &__title {
         all: unset;
         font-weight: 600;
-        font-size: .875rem;
+        font-size: 0.875rem;
     }
 
     &__description {
         all: unset;
-        font-size: .75rem;
+        font-size: 0.75rem;
     }
 
     &__buttons {
         margin-left: auto;
         padding-left: 1rem;
         display: flex;
-        gap: .25rem;
+        gap: 0.25rem;
     }
 
     &__button {
         all: unset;
         border: 1px solid var(--border-color);
-        padding: .5rem;
+        padding: 0.5rem;
         border-radius: 5px;
-        font-size: .875rem;
+        font-size: 0.875rem;
         cursor: pointer;
         display: flex;
         align-items: center;
-        transition: .1s all;
+        transition: 0.1s all;
         color: var(--text-color);
 
         &-icon {
-            width: .875rem;
-            height: .875rem;
+            width: 0.875rem;
+            height: 0.875rem;
         }
 
         &:hover {
@@ -121,6 +133,5 @@ export default {
             box-shadow: 0 3px 7px rgba(0, 0, 0, 0.1);
         }
     }
-
 }
 </style>
