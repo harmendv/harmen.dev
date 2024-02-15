@@ -74,7 +74,6 @@ export default {
     backface-visibility: visible;
     transition: all 0.1s ease;
     color: var(--text-color);
-    min-width: 400px;
 
     &__header {
         padding: 1rem;
