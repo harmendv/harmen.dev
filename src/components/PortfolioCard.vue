@@ -1,14 +1,26 @@
 <template>
     <div class="portfolio-card">
         <div class="portfolio-card__header">
-            <img class="portfolio-card__avatar" src="../assets/avatar.jpg" alt="">
+            <img
+                class="portfolio-card__avatar"
+                src="../assets/avatar.jpg"
+                alt=""
+            />
             <div class="portfolio-card__info">
                 <h1 class="portfolio-card__name">{{ name }}</h1>
                 <h2 class="portfolio-card__job-title">{{ jobTitle }}</h2>
             </div>
             <div class="portfolio-card__header-buttons">
-                <button class="portfolio-card__button" type="button" @click="goToGithub">
-                    <lv-icon name="github" push=".25"/> GitHub
+                <button
+                    class="portfolio-card__button"
+                    type="button"
+                    @click="goToGithub"
+                >
+                    <lv-icon
+                        name="github"
+                        push=".25"
+                    />
+                    GitHub
                 </button>
             </div>
         </div>
@@ -19,7 +31,7 @@
 </template>
 
 <script>
-import { LvIcon } from '@libvue/core';
+import { LvIcon } from "@libvue/core";
 
 export default {
     components: {
@@ -42,13 +54,13 @@ export default {
 
     methods: {
         goToGithub() {
-            window.open(this.githubUrl, '_blank');
-        }
+            window.open(this.githubUrl, "_blank");
+        },
     },
-    emits: ['mounted'],
+    emits: ["mounted"],
     mounted() {
-        this.$emit('mounted');
-    }
+        this.$emit("mounted");
+    },
 };
 </script>
 
@@ -60,8 +72,9 @@ export default {
     box-shadow: 0 3px 15px rgba(0, 0, 0, 0.07);
     transform: perspective(1000px) translateZ(0);
     backface-visibility: visible;
-    transition: all .1s ease;
+    transition: all 0.1s ease;
     color: var(--text-color);
+    min-width: 400px;
 
     &__header {
         padding: 1rem;
@@ -91,7 +104,7 @@ export default {
     &__job-title {
         all: unset;
         display: block;
-        font-size: .75rem;
+        font-size: 0.75rem;
     }
 
     &__content {
@@ -110,18 +123,18 @@ export default {
     &__button {
         all: unset;
         border: 1px solid var(--border-color);
-        padding: .5rem;
+        padding: 0.5rem;
         border-radius: 5px;
-        font-size: .875rem;
+        font-size: 0.875rem;
         cursor: pointer;
         display: flex;
         align-items: center;
-        transition: .1s all;
+        transition: 0.1s all;
 
         &-icon {
-            width: .875rem;
-            height: .875rem;
-            margin-right: .25rem;
+            width: 0.875rem;
+            height: 0.875rem;
+            margin-right: 0.25rem;
         }
 
         &:hover {
