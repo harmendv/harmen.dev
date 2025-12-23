@@ -1,44 +1,49 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 @import "tailwindcss";
 
-/* Flicker effect */
-@keyframes flicker {
-  0%, 100% { opacity: 1; }
-  10% { opacity: 0.8; }
-  20% { opacity: 0.4; }
-  30% { opacity: 0.9; }
-  40% { opacity: 0.2; }
-  50% { opacity: 0.7; }
-  60% { opacity: 0.3; }
-  70% { opacity: 0.8; }
-  80% { opacity: 0.5; }
-  90% { opacity: 0.9; }
+@layer base {
+    html {
+        height: 100%;
+    }
+
+    body {
+        margin: 0;
+        min-height: 100%;
+        background: rgb(15, 15, 18);
+        color: var(--color-neutral-50);
+    }
+
+    #app {
+        display: flex;
+        flex-direction: column;
+    }
+    .gradient {
+        display: inline-block;
+        background-image: linear-gradient(135deg, #f9b41e, #fdf910);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    .gradient-blue {
+        display: inline-block;
+        background-image: linear-gradient(135deg, #1ebff9, #1077fd);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    .clamp {
+        font-size: clamp(1rem, 8vw, 4rem);
+        line-height: clamp(1rem, 8vw, 4rem);
+    }
+
+    ::selection {
+        background: #ff0099;
+        color: black;
+        text-shadow: none;
+    }
 }
 
-.flicker {
-  animation: flicker 0.5s linear infinite;
-}
-
-/* Shake effect */
-@keyframes shake {
-  0% { transform: translate(0, 0); }
-  10% { transform: translate(-2px, 2px); }
-  20% { transform: translate(-4px, -2px); }
-  30% { transform: translate(4px, 2px); }
-  40% { transform: translate(-2px, -4px); }
-  50% { transform: translate(2px, 4px); }
-  60% { transform: translate(-4px, 2px); }
-  70% { transform: translate(4px, -2px); }
-  80% { transform: translate(-2px, 4px); }
-  90% { transform: translate(2px, -4px); }
-  100% { transform: translate(0, 0); }
-}
-
-.shake {
-  animation: shake 0.4s cubic-bezier(.36,.07,.19,.97) infinite;
-}
-
-/* Combine shake and flicker for hover */
-.hover-effect:hover {
-  /* Use both animations */
-  animation: shake 0.4s cubic-bezier(.36,.07,.19,.97) infinite, flicker 0.5s linear infinite;
+@theme {
+    --font-sans: "Inter", sans-serif;
+    --font-display: "Archivo Black", sans-serif;
 }
