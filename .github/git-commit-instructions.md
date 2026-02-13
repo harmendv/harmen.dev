@@ -19,7 +19,7 @@
 
 ## Context Files To Keep Updated
 - `README.md`: short project purpose + run/build/deploy commands.
-- `instructions.md` (this file): Codex repo-specific guidance.
+- `.github/git-commit-instructions.md` (this file): Codex repo-specific guidance.
 - Optional: `AGENTS.md`: strict agent instructions and workflow preferences when you want Codex to follow project policies.
 
 ## AGENTS vs Skills

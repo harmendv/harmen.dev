@@ -28,4 +28,4 @@ Before finalizing code suggestions, prefer checks in this order:
 2. Manual visual check in `npm run dev`
 
 ## Notes
-If you want GitHub Copilot Chat to apply this automatically in VS Code, duplicate this content into `.github/copilot-instructions.md`.
+This file is already in the expected location for GitHub Copilot instruction discovery.
