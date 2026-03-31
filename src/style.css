@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap');
 
 :root {
-    --bg: #050505;
+    --bg: #292d30;
     --surface: #0e0e0e;
     --line: #2b2b2b;
     --text: #f2f2f2;
@@ -23,10 +23,7 @@ body,
 
 body {
     overflow: hidden;
-    background:
-        radial-gradient(circle at 14% 15%, rgba(242, 207, 16, 0.1), transparent 24%),
-        radial-gradient(circle at 86% 82%, rgba(242, 207, 16, 0.08), transparent 30%),
-        var(--bg);
+    background: var(--bg);
     color: var(--text);
     font-family: 'JetBrains Mono', monospace;
 }
@@ -36,53 +33,15 @@ body {
     height: 100%;
     display: grid;
     place-items: center;
-    padding: 1rem;
 }
 
 .terminal {
     width: min(820px, 96vw);
     height: min(560px, 88vh);
-    border: 1px solid var(--line);
-    background: color-mix(in srgb, var(--surface) 92%, black);
+    background: transparent;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 0 0 1px rgba(242, 207, 16, 0.13), 0 20px 50px rgba(0, 0, 0, 0.55);
     animation: boot 0.5s ease-out both;
-    border-radius: 1rem;
-}
-
-.terminal-topbar {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    border-bottom: 1px solid var(--line);
-    padding: 0.7rem 0.85rem;
-    min-height: 42px;
-}
-
-.dots {
-    display: inline-flex;
-    gap: 0.4rem;
-}
-
-.dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 999px;
-    background: #d8d8d8;
-    opacity: 0.75;
-}
-
-.dot-accent {
-    background: var(--accent);
-    opacity: 1;
-}
-
-.title {
-    margin: 0;
-    color: var(--muted);
-    font-size: 0.74rem;
-    letter-spacing: 0.04em;
 }
 
 .terminal-body {

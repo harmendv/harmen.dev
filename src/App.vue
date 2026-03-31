@@ -76,7 +76,7 @@ function runCommand(raw) {
     const commands = {
         help: () => [
             "Available commands:",
-            "help, whoami, about, tools, skills, contact, now, ls, cat <file>, pwd, uname, date, echo <text>, history, clear",
+            "help, whoami, about, tools, contact, now, ls, cat <file>, pwd, uname, date, echo <text>, history, clear",
         ],
         whoami: () => "Harmen - Frontend Developer",
         about: () => files["about.txt"],
@@ -178,18 +178,6 @@ onMounted(() => {
             class="terminal"
             aria-label="Terminal"
         >
-            <header class="terminal-topbar">
-                <div
-                    class="dots"
-                    aria-hidden="true"
-                >
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                    <span class="dot dot-accent"></span>
-                </div>
-                <p class="title">harmen@dev — zsh</p>
-            </header>
-
             <div
                 ref="outputRef"
                 class="terminal-body"
