@@ -78,8 +78,7 @@ const navItems: NavItem[] = [
                     <h1
                         class="text-2xl font-semibold leading-tight tracking-[-0.03em] text-foreground sm:text-4xl text-balance"
                     >
-                        I build tools and interfaces that people
-                        enjoy using.
+                        I build clear interfaces for complex web products.
                     </h1>
                     <p class="mt-5 text-lg leading-8 text-muted-foreground">
                         {{ profile.intro }}

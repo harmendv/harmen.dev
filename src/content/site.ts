@@ -11,7 +11,7 @@ export const profile: Profile = {
     email: "hello@harmen.dev",
     github: "https://github.com/harmendv",
     website: "https://harmen.dev",
-    intro: "I'm a frontend developer based in the Netherlands. I enjoy building clean, well-considered web experiences, whether that’s a design system, a component library, developer tooling, or a small open-source side project.",
+    intro: "I like turning complex workflows into clear, maintainable UI — whether that’s a booking flow, internal tool, content management interface, search widget, or component library. My work sits close to the product: structured, usable, and built to last.",
     summary: "",
     stack: [
         { icon: "vuejs", text: "Vue.js" },
@@ -19,7 +19,7 @@ export const profile: Profile = {
         { icon: "inertia", text: "Inertia.js" },
         { icon: "laravel", text: "Laravel" },
         { icon: "shadcn", text: "Shadcn-vue" },
-        { icon: "typescript", text: "Typescript" },
+        { icon: "typescript", text: "TypeScript" },
     ],
 };
 
@@ -27,11 +27,11 @@ export const projects: Project[] = [
     {
         title: "Guitar Scales",
         description:
-            "A visual tool for guitarists to explore scales, modes across the fretboard.",
+            "A visual fretboard tool that helps guitarists explore scales, modes, positions, and tunings without getting lost in theory.",
         href: "https://guitarscales.harmen.dev",
         tags: [
             { icon: "vuejs", text: "Vue.js" },
-            { icon: "typescript", text: "Typescript" },
+            { icon: "typescript", text: "TypeScript" },
             { icon: "tailwind", text: "Tailwind" },
             { icon: "vite", text: "Vite.js" },
         ],
@@ -39,11 +39,11 @@ export const projects: Project[] = [
     {
         title: "Libvue Component Library",
         description:
-            "An opiniated and accessible opensource collection of custom vue 3 components.",
+            "An opinionated Vue 3 component library focused on accessible, reusable UI patterns for modern web applications.",
         href: "https://github.com/libvue/core",
         tags: [
             { icon: "vuejs", text: "Vue.js" },
-            { icon: "javascript", text: "Javascript" },
+            { icon: "javascript", text: "JavaScript" },
             { icon: "sass", text: "Scss" },
             { icon: "vite", text: "Vite.js" },
         ],
@@ -51,10 +51,10 @@ export const projects: Project[] = [
     {
         title: "Libvue Laravel Orion API",
         description:
-            "A Laravel Orion compatible repository-based Javascript http-client powered by axios.",
+            "A Laravel Orion compatible repository-based JavaScript http-client powered by axios.",
         href: "https://github.com/libvue/laravel-orion-api",
         tags: [
-            { icon: "javascript", text: "Javascript" },
+            { icon: "javascript", text: "JavaScript" },
             { icon: "vite", text: "Vite.js" },
         ],
     },
@@ -66,10 +66,10 @@ export const experience: ExperienceItem[] = [
         role: "Senior Frontend Developer",
         company: "Travel Agency",
         summary:
-            "Working on the design and development of digital travel platforms, including booking applications, agent-facing tools, content management systems, reusable component libraries, and search widgets for external partners. Responsible for improving existing applications, building scalable frontend solutions, and translating complex travel-related workflows into clear and usable interfaces.",
+            "Designing and building digital travel platforms, including booking flows, agent-facing tools, content management systems, reusable UI libraries, and external search widgets. My focus is on making complex travel workflows understandable, maintainable, and pleasant to use.",
         tags: [
             { icon: "vuejs", text: "Vue.js" },
-            { icon: "typescript", text: "Typescript" },
+            { icon: "typescript", text: "TypeScript" },
             { icon: "inertia", text: "Inertia.js" },
             { icon: "tailwind", text: "Tailwind" },
             { icon: "laravel", text: "Laravel" },
@@ -80,15 +80,15 @@ export const experience: ExperienceItem[] = [
     {
         period: "2013 - 2022",
         role: "Frontend Developer",
-        company: "Digital media & Technology",
+        company: "Digital Media & Technology",
         summary:
             "Worked on a wide range of commercial web applications, marketing platforms, mobile payment flows, promotional websites, content-driven platforms, and mobile apps. Involved in both design and frontend development, with a strong focus on Vue.js single-page applications, landing pages, conversion-focused interfaces, and mobile-first user experiences.",
         tags: [
             { icon: "vuejs", text: "Vue.js" },
-            { icon: "javascript", text: "Javascript" },
+            { icon: "javascript", text: "JavaScript" },
             { icon: "laravel", text: "Laravel" },
             { icon: "ionic", text: "Ionic" },
-            { icon: "sass", text: "Scss" },
+            { icon: "sass", text: "SCSS" },
             { icon: "webpack", text: "Webpack" },
             { icon: "sketch", text: "Sketch" },
         ],
@@ -102,8 +102,8 @@ export const experience: ExperienceItem[] = [
         tags: [
             { icon: "html", text: "HTML" },
             { icon: "css", text: "CSS" },
-            { icon: "javascript", text: "Javascript" },
-            { icon: "wordpress", text: "Wordpress" },
+            { icon: "javascript", text: "JavaScript" },
+            { icon: "wordpress", text: "WordPress" },
         ],
     },
     {
