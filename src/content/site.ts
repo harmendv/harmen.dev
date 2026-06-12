@@ -19,6 +19,7 @@ export const profile: Profile = {
         { icon: "inertia", text: "Inertia.js" },
         { icon: "laravel", text: "Laravel" },
         { icon: "shadcn", text: "Shadcn-vue" },
+        { icon: "typescript", text: "Typescript" },
     ],
 };
 
@@ -26,21 +27,24 @@ export const projects: Project[] = [
     {
         title: "Guitar Scales",
         description:
-            "A visual tool for guitarists to explore scales, modes, and chord shapes across the fretboard. Built with Vue 3 and a custom SVG rendering engine, no dependencies for the core visualisation.",
+            "A visual tool for guitarists to explore scales, modes across the fretboard.",
         href: "https://guitarscales.harmen.dev",
         tags: [
             { icon: "vuejs", text: "Vue.js" },
-            { icon: "vite", text: "Vite.js" },
+            { icon: "typescript", text: "Typescript" },
             { icon: "tailwind", text: "Tailwind" },
+            { icon: "vite", text: "Vite.js" },
         ],
     },
     {
         title: "Libvue Component Library",
         description:
-            "A headless, framework-agnostic kit for building image galleries. Handles keyboard navigation, lazy loading, lightbox behaviour, and touch gestures bring your own styles.",
+            "An opiniated and accessible opensource collection of custom vue 3 components.",
         href: "https://github.com/libvue/core",
         tags: [
             { icon: "vuejs", text: "Vue.js" },
+            { icon: "javascript", text: "Javascript" },
+            { icon: "sass", text: "Scss" },
             { icon: "vite", text: "Vite.js" },
         ],
     },
@@ -50,7 +54,8 @@ export const projects: Project[] = [
             "A Laravel Orion compatible repository-based Javascript http-client powered by axios.",
         href: "https://github.com/libvue/laravel-orion-api",
         tags: [
-            { icon: "javascript", text: "Javascript" }
+            { icon: "javascript", text: "Javascript" },
+            { icon: "vite", text: "Vite.js" },
         ],
     },
 ];
@@ -64,6 +69,7 @@ export const experience: ExperienceItem[] = [
             "Working on the design and development of digital travel platforms, including booking applications, agent-facing tools, content management systems, reusable component libraries, and search widgets for external partners. Responsible for improving existing applications, building scalable frontend solutions, and translating complex travel-related workflows into clear and usable interfaces.",
         tags: [
             { icon: "vuejs", text: "Vue.js" },
+            { icon: "typescript", text: "Typescript" },
             { icon: "inertia", text: "Inertia.js" },
             { icon: "tailwind", text: "Tailwind" },
             { icon: "laravel", text: "Laravel" },
@@ -96,6 +102,7 @@ export const experience: ExperienceItem[] = [
         tags: [
             { icon: "html", text: "HTML" },
             { icon: "css", text: "CSS" },
+            { icon: "javascript", text: "Javascript" },
             { icon: "wordpress", text: "Wordpress" },
         ],
     },

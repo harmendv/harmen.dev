@@ -17,6 +17,7 @@ import {
     siWordpress,
     siSketch,
     siFigma,
+    siTypescript,
 } from "simple-icons";
 
 import { Badge } from "@/components/ui/badge";
@@ -43,6 +44,7 @@ const iconMap: Record<IconName, typeof siVuedotjs | typeof siTailwindcss> = {
     php: siPhp,
     sketch: siSketch,
     figma: siFigma,
+    typescript: siTypescript,
 };
 
 const normalized = computed(() => {

@@ -13,6 +13,7 @@ export type IconName =
   | "vite"
   | "vuejs"
   | "javascript"
+  | "typescript"
   | "webpack"
   | "sass"
   | "ionic"
