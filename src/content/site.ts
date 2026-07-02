@@ -126,11 +126,6 @@ export const contactLinks: ContactLink[] = [
     href: "https://github.com/harmendv",
   },
   {
-    label: "Website",
-    value: "harmen.dev",
-    href: "https://harmen.dev",
-  },
-  {
     label: "LinkedIn",
     value: "linkedin.com/in/harmendv",
     href: "https://www.linkedin.com/in/harmendv",

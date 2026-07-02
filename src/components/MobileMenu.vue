@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { animate, createSpring, stagger } from "animejs";
-import { Menu, X } from "lucide-vue-next";
-import { nextTick, onBeforeUnmount, ref } from "vue";
+import { ExternalLink, Menu, X } from "lucide-vue-next";
+import { computed, nextTick, onBeforeUnmount, ref } from "vue";
 import { RouterLink } from "vue-router";
 
 import type { ContactLink } from "@/types/site";
@@ -14,101 +14,50 @@ interface NavItem {
     };
 }
 
-defineProps<{
+const props = defineProps<{
     name: string;
     role: string;
     navItems: NavItem[];
     contactLinks: ContactLink[];
 }>();
 
+// The mobile menu drops the "Contact" nav item (its links are shown at the
+// bottom of the menu instead).
+const mobileNavItems = computed(() =>
+    props.navItems.filter((item) => item.to.hash !== "#contact")
+);
+
 const isOpen = ref(false);
 const menuRoot = ref<HTMLElement | null>(null);
 const panelPath = ref<SVGPathElement | null>(null);
+const closeBtn = ref<HTMLElement | null>(null);
 
-// Bottom-edge morph state, in a 0–100 viewBox. `y` is how far the bottom edge
-// has grown down; `bulge` is the convex depth of the curve. A spring drives
-// both. The resting `y` is pushed slightly *past* 100 so the settled edge (and
-// the small tail oscillations) stay clipped below the viewport — no white line.
-const REST_Y = 106;
-const morph = { y: 0, bulge: 20 };
-
-// Bottom edge is sampled at these x positions and smoothed, so it can ripple
-// (rather than being a single clean curve) during the wobble.
-const POINTS_X = [100, 80, 60, 40, 20, 0];
-const MAX_WAVE = 6.5; // max ripple amplitude (viewBox units)
-const WAVE_GAIN = 0.5; // how strongly the bounce distance drives the ripple
-
-let phases = [0, 0];
-let jitter = POINTS_X.map(() => 1);
-let waveAmp = 0;
-let waveClock = 0;
-let filled = false; // ripple only kicks in after the panel first fills
-let prevT = 0;
+// The panel grows in a 0–100 viewBox. `y` is the bottom edge, driven down with a
+// plain ease-out (no bounce). The bottom curve's depth follows sin(progress·π),
+// so it starts flat (a rectangle), swells to a convex curve mid-travel, and
+// flattens again as it settles. The resting `y` sits just past 100 so the filled
+// bottom stays clipped — no white line.
+const START_Y = 14; // initial rectangle height (~branding/header area)
+const REST_Y = 104;
+const MAX_BULGE = 20; // deepest curve, at mid-travel
+const morph = { y: 0 };
 
 const prefersReducedMotion = () =>
     typeof window !== "undefined" &&
     window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-function randomizeWave() {
-    phases = [Math.random() * Math.PI * 2, Math.random() * Math.PI * 2];
-    jitter = POINTS_X.map(() => 0.55 + Math.random() * 0.9);
-    waveAmp = 0;
-    waveClock = 0;
-    filled = false;
-}
-
-// Bottom-edge points: base convex curve (bulge) + windowed, randomized ripple
-// (waveAmp). The window pins the corners so the side walls stay clean.
-function bottomPoints() {
-    return POINTS_X.map((x, i) => {
-        const win = Math.sin((Math.PI * x) / 100); // 0 at edges, 1 at center
-        const base = morph.y + morph.bulge * win;
-        const ripple =
-            waveAmp *
-            win *
-            (0.7 * jitter[i] * Math.sin(x * 0.11 + phases[0] + waveClock) +
-                0.3 * Math.sin(x * 0.05 + phases[1] - waveClock * 0.6));
-        return { x, y: base + ripple };
-    });
-}
-
-// Smooth the sampled points into a filled path via Catmull-Rom → bezier.
-function buildPath() {
-    const p = bottomPoints();
-    let d = `M 0 0 L 100 0 L ${p[0].x} ${p[0].y.toFixed(2)}`;
-    for (let i = 0; i < p.length - 1; i++) {
-        const p0 = p[i - 1] ?? p[i];
-        const p1 = p[i];
-        const p2 = p[i + 1];
-        const p3 = p[i + 2] ?? p[i + 1];
-        const c1x = p1.x + (p2.x - p0.x) / 6;
-        const c1y = p1.y + (p2.y - p0.y) / 6;
-        const c2x = p2.x - (p3.x - p1.x) / 6;
-        const c2y = p2.y - (p3.y - p1.y) / 6;
-        d += ` C ${c1x.toFixed(2)} ${c1y.toFixed(2)} ${c2x.toFixed(2)} ${c2y.toFixed(2)} ${p2.x} ${p2.y.toFixed(2)}`;
-    }
-    return `${d} Z`;
-}
-
 function applyPath() {
-    panelPath.value?.setAttribute("d", buildPath());
-}
-
-// Called every animation frame. Once the panel has filled, the ripple
-// amplitude tracks how far the springy edge sits from its resting position —
-// so ripples peak exactly at the bounce (when the page shows through) and fade
-// to nothing as it settles.
-function updateMorph() {
-    const now = performance.now();
-    const dt = prevT ? now - prevT : 16;
-    if (!filled && morph.y >= 100) filled = true;
-    const target = filled
-        ? Math.min(MAX_WAVE, Math.abs(morph.y - REST_Y) * WAVE_GAIN)
-        : 0;
-    waveAmp += (target - waveAmp) * 0.5;
-    waveClock += dt * 0.014;
-    prevT = now;
-    applyPath();
+    const progress = Math.min(
+        1,
+        Math.max(0, (morph.y - START_Y) / (REST_Y - START_Y))
+    );
+    const bulge = MAX_BULGE * Math.sin(progress * Math.PI);
+    const y = morph.y.toFixed(2);
+    const c = (morph.y + bulge).toFixed(2);
+    panelPath.value?.setAttribute(
+        "d",
+        `M 0 0 L 100 0 L 100 ${y} Q 50 ${c} 0 ${y} Z`
+    );
 }
 
 function items() {
@@ -133,29 +82,36 @@ async function open() {
 
     if (prefersReducedMotion()) {
         morph.y = REST_Y;
-        morph.bulge = 0;
-        waveAmp = 0;
         applyPath();
         items().forEach((el) => {
             el.style.opacity = "1";
             el.style.transform = "none";
         });
+        if (closeBtn.value) closeBtn.value.style.opacity = "1";
         return;
     }
 
-    // Start collapsed with a deep curve, then spring the bottom edge down past
-    // the viewport so it overshoots, bounces, and ripples before settling.
-    randomizeWave();
-    morph.y = 0;
-    morph.bulge = 20;
-    prevT = performance.now();
+    // Start as a full-width rectangle covering the branding/header area, then
+    // grow the curved bottom edge down and past the viewport with a plain
+    // ease-out (no bounce); the curve flattens as it settles.
+    morph.y = START_Y;
     applyPath();
+
+    // Fade the panel in briefly so the starting rectangle doesn't hard-pop.
+    if (panelPath.value) {
+        animate(panelPath.value, {
+            opacity: [0, 1],
+            duration: 110,
+            ease: "outQuad",
+        });
+    }
 
     animate(morph, {
         y: REST_Y,
         bulge: 0,
-        ease: createSpring({ stiffness: 110, damping: 6, mass: 1 }),
-        onUpdate: updateMorph,
+        duration: 420,
+        ease: "outCubic",
+        onUpdate: applyPath,
     });
 
     animate(items(), {
@@ -163,9 +119,20 @@ async function open() {
         translateX: [-18, 0],
         translateY: [28, 0],
         scale: [0.9, 1],
-        delay: stagger(70, { start: 160 }),
-        ease: createSpring({ stiffness: 150, damping: 11, mass: 1 }),
+        delay: stagger(45, { start: 110 }),
+        ease: createSpring({ stiffness: 180, damping: 12, mass: 1 }),
     });
+
+    // The close button just scales + fades in — no slide.
+    if (closeBtn.value) {
+        animate(closeBtn.value, {
+            opacity: [0, 1],
+            scale: [0.6, 1],
+            delay: 90,
+            duration: 240,
+            ease: createSpring({ stiffness: 190, damping: 13, mass: 1 }),
+        });
+    }
 }
 
 function close() {
@@ -185,14 +152,20 @@ function close() {
         ease: "inQuad",
     });
 
-    filled = false;
-    prevT = performance.now();
+    if (closeBtn.value) {
+        animate(closeBtn.value, {
+            opacity: 0,
+            scale: 0.6,
+            duration: 150,
+            ease: "inQuad",
+        });
+    }
+
     animate(morph, {
         y: 0,
-        bulge: 16,
-        duration: 380,
+        duration: 260,
         ease: "inCubic",
-        onUpdate: updateMorph,
+        onUpdate: applyPath,
         onComplete: () => {
             isOpen.value = false;
         },
@@ -266,8 +239,9 @@ onBeforeUnmount(() => {
                 </RouterLink>
 
                 <button
+                    ref="closeBtn"
                     type="button"
-                    class="mobile-menu__item absolute right-6 top-10 z-10 -mr-2 inline-flex size-10 items-center justify-center rounded-full text-background"
+                    class="mobile-menu__close absolute right-6 top-10 z-10 -mr-2 inline-flex size-10 items-center justify-center rounded-full text-background"
                     aria-label="Close menu"
                     @click="close"
                 >
@@ -279,17 +253,17 @@ onBeforeUnmount(() => {
 
                 <nav
                     aria-label="Mobile"
-                    class="relative flex h-full flex-col justify-start gap-10 px-6 pt-28 pb-16"
+                    class="relative flex h-full flex-col px-6 pt-28 pb-8"
                 >
                     <ul class="flex flex-col gap-5">
                         <li
-                            v-for="item in navItems"
+                            v-for="item in mobileNavItems"
                             :key="item.label"
                             class="mobile-menu__item"
                         >
                             <RouterLink
                                 :to="item.to"
-                                class="text-3xl font-semibold tracking-[-0.03em] text-background transition-opacity hover:opacity-70"
+                                class="text-xl font-semibold tracking-[-0.03em] text-background transition-opacity hover:opacity-70"
                                 @click="close"
                             >
                                 {{ item.label }}
@@ -297,40 +271,35 @@ onBeforeUnmount(() => {
                         </li>
                     </ul>
 
-                    <div
-                        class="flex flex-col gap-4 border-t border-background/15 pt-8"
-                    >
-                        <p
-                            class="mobile-menu__item text-sm font-medium uppercase tracking-widest text-background/50"
+                    <ul class="mt-auto flex flex-col gap-3">
+                        <li
+                            v-for="entry in contactLinks"
+                            :key="entry.label"
+                            class="mobile-menu__item"
                         >
-                            Contact
-                        </p>
-                        <ul class="flex flex-col gap-3">
-                            <li
-                                v-for="entry in contactLinks"
-                                :key="entry.label"
-                                class="mobile-menu__item"
+                            <a
+                                :href="entry.href"
+                                :target="
+                                    entry.href.startsWith('http')
+                                        ? '_blank'
+                                        : undefined
+                                "
+                                :rel="
+                                    entry.href.startsWith('http')
+                                        ? 'noreferrer'
+                                        : undefined
+                                "
+                                class="inline-flex items-center gap-2 text-lg text-background/80 transition-opacity hover:opacity-70"
+                                @click="close"
                             >
-                                <a
-                                    :href="entry.href"
-                                    :target="
-                                        entry.href.startsWith('http')
-                                            ? '_blank'
-                                            : undefined
-                                    "
-                                    :rel="
-                                        entry.href.startsWith('http')
-                                            ? 'noreferrer'
-                                            : undefined
-                                    "
-                                    class="text-lg text-background/80 transition-opacity hover:opacity-70"
-                                    @click="close"
-                                >
-                                    {{ entry.label }}
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+                                <ExternalLink
+                                    aria-hidden="true"
+                                    class="size-4"
+                                />
+                                <span>{{ entry.label }}</span>
+                            </a>
+                        </li>
+                    </ul>
                 </nav>
             </div>
         </Teleport>
@@ -338,9 +307,10 @@ onBeforeUnmount(() => {
 </template>
 
 <style scoped>
-/* Entries start hidden so anime.js can fade/slide them in without a flash on
-   the first painted frame. */
-.mobile-menu__item {
+/* Entries and the close button start hidden so anime.js can animate them in
+   without a flash on the first painted frame. */
+.mobile-menu__item,
+.mobile-menu__close {
     opacity: 0;
 }
 </style>
