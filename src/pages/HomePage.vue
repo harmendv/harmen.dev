@@ -4,6 +4,7 @@ import { RouterLink } from "vue-router";
 
 import ContentBadge from "@/components/ContentBadge.vue";
 import ExperienceSection from "@/components/ExperienceSection.vue";
+import MobileMenu from "@/components/MobileMenu.vue";
 import ProjectsSection from "@/components/ProjectsSection.vue";
 import { contactLinks, experience, profile, projects } from "@/content/site";
 
@@ -30,7 +31,7 @@ const navItems: NavItem[] = [
         <div class="mx-auto max-w-4xl">
             <header class="pb-8">
                 <div
-                    class="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between"
+                    class="flex items-start justify-between gap-6"
                 >
                     <RouterLink
                         to="/"
@@ -60,7 +61,7 @@ const navItems: NavItem[] = [
 
                     <nav
                         aria-label="Primary"
-                        class="flex flex-wrap items-center gap-8 pt-1 text-md text-foreground"
+                        class="hidden flex-wrap items-center gap-8 pt-1 text-md text-foreground sm:flex"
                     >
                         <RouterLink
                             v-for="item in navItems"
@@ -72,6 +73,13 @@ const navItems: NavItem[] = [
                             {{ item.label }}
                         </RouterLink>
                     </nav>
+
+                    <MobileMenu
+                        :name="profile.name"
+                        :role="profile.role"
+                        :nav-items="navItems"
+                        :contact-links="contactLinks"
+                    />
                 </div>
 
                 <section class="pt-14">
