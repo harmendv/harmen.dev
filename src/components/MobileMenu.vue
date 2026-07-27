@@ -157,7 +157,10 @@ function finishClose() {
     releaseShell();
     document.body.style.overflow = "";
     // Keep focus on the toggle button (now back in its "open" state).
-    toggleBtn.value?.focus();
+    // `preventScroll` is essential: the toggle sits at the top of the page, and
+    // a default `.focus()` would scroll it into view — yanking the viewport
+    // back up and undoing the router's smooth-scroll to the tapped section.
+    toggleBtn.value?.focus({ preventScroll: true });
 }
 
 function close() {

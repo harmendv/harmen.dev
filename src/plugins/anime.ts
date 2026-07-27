@@ -62,9 +62,34 @@ const inViewport = (el: HTMLElement) => {
 };
 
 /**
- * Play `animation` once the element enters the viewport. `container: "end"` is
- * the viewport bottom, so `onEnter` fires the instant the element's top edge
- * scrolls in; elements already visible at load are played immediately.
+ * The scroll line at which a reveal fires: the element's top edge rising to
+ * 60px above the viewport bottom (`end-=60`) — a small offset so reveals start
+ * a touch after the element first peeks in.
+ *
+ * The exception is content in the last screenful of the page (e.g. the footer
+ * links): the document runs out of scroll before their top can climb that far,
+ * so the `-=60` line is never reached and `onEnter` would never fire, leaving
+ * them stuck hidden. For those we drop the offset to the plain viewport bottom
+ * (`end`), a threshold every scrollable element crosses on its way in.
+ */
+function enterContainer(el: HTMLElement) {
+    const vh = window.innerHeight || document.documentElement.clientHeight;
+    const maxScroll = document.documentElement.scrollHeight - vh;
+    // Where the element's top edge sits (viewport coords) at maximum scroll.
+    const topAtBottom =
+        el.getBoundingClientRect().top + window.scrollY - maxScroll;
+    return topAtBottom <= vh - 60 ? "end-=60" : "end";
+}
+
+/**
+ * Play `animation` once the element scrolls into view (see `enterContainer` for
+ * the trigger line); elements already visible at load are played immediately.
+ *
+ * Measurement and observer setup wait one frame: during Vue's `mounted` the
+ * browser hasn't finished layout, so reading the element's box there can report
+ * it as off-screen or misjudge how far it can scroll. `onEnter` only fires when
+ * the element *crosses* the line, so initially-visible content is played via
+ * the `inViewport` check instead — otherwise it would never animate.
  */
 function playOnScroll(el: HTMLElement, animation: Anim) {
     let played = false;
@@ -74,24 +99,23 @@ function playOnScroll(el: HTMLElement, animation: Anim) {
         animation.play();
     };
 
-    const observer = onScroll({
-        target: el,
-        enter: { target: "start", container: "end" },
-        onEnter: play,
-    });
+    let observer: ReturnType<typeof onScroll> | undefined;
 
-    // Play anything already on screen at load. This must wait one frame:
-    // during Vue's `mounted` the browser hasn't finished layout, so measuring
-    // the element there can report it as off-screen. `onEnter` only fires when
-    // the element *crosses* into view, so without this initially-visible
-    // content would never animate.
     const raf = requestAnimationFrame(() => {
-        if (!played && inViewport(el)) play();
+        if (inViewport(el)) {
+            play();
+            return;
+        }
+        observer = onScroll({
+            target: el,
+            enter: { target: "start", container: enterContainer(el) },
+            onEnter: play,
+        });
     });
 
     return () => {
         cancelAnimationFrame(raf);
-        observer.revert();
+        observer?.revert();
         animation.revert();
     };
 }
