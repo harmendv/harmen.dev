@@ -45,7 +45,8 @@ const shellEl = () => document.getElementById("app-shell");
 
 function items() {
     return (
-        menuRoot.value?.querySelectorAll<HTMLElement>(".mobile-menu__item") ?? []
+        menuRoot.value?.querySelectorAll<HTMLElement>(".mobile-menu__item") ??
+        []
     );
 }
 
@@ -126,7 +127,11 @@ async function open() {
 
     // A blurred scrim dims the page…
     if (scrim.value) {
-        animate(scrim.value, { opacity: [0, 1], duration: 420, ease: "out(2)" });
+        animate(scrim.value, {
+            opacity: [0, 1],
+            duration: 420,
+            ease: "out(2)",
+        });
     }
 
     // …and the panel slides over from the right.

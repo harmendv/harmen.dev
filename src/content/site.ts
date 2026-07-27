@@ -1,8 +1,8 @@
 import type {
-  ContactLink,
-  ExperienceItem,
-  Profile,
-  Project,
+    ContactLink,
+    ExperienceItem,
+    Profile,
+    Project,
 } from "@/types/site";
 
 export const profile: Profile = {
@@ -120,14 +120,14 @@ export const experience: ExperienceItem[] = [
 ];
 
 export const contactLinks: ContactLink[] = [
-  {
-    label: "GitHub",
-    value: "github.com/harmendv",
-    href: "https://github.com/harmendv",
-  },
-  {
-    label: "LinkedIn",
-    value: "linkedin.com/in/harmendv",
-    href: "https://www.linkedin.com/in/harmendv",
-  },
+    {
+        label: "GitHub",
+        value: "github.com/harmendv",
+        href: "https://github.com/harmendv",
+    },
+    {
+        label: "LinkedIn",
+        value: "linkedin.com/in/harmendv",
+        href: "https://www.linkedin.com/in/harmendv",
+    },
 ];

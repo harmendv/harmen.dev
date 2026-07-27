@@ -90,7 +90,11 @@ const navItems: NavItem[] = [
                         I build clear interfaces for complex web products.
                     </h1>
                     <p
-                        v-reveal:words="{ delay: 260, stagger: 16, duration: 520 }"
+                        v-reveal:words="{
+                            delay: 260,
+                            stagger: 16,
+                            duration: 520,
+                        }"
                         class="mt-5 text-lg leading-8 text-muted-foreground"
                     >
                         {{ profile.intro }}
