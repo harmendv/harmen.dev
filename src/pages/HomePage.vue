@@ -30,10 +30,9 @@ const navItems: NavItem[] = [
     >
         <div class="mx-auto max-w-4xl">
             <header class="pb-8">
-                <div
-                    class="flex items-start justify-between gap-6"
-                >
+                <div class="flex items-start justify-between gap-6">
                     <RouterLink
+                        v-logo
                         to="/"
                         class="w-fit"
                         aria-label="Go to home page"
@@ -60,6 +59,7 @@ const navItems: NavItem[] = [
                     </RouterLink>
 
                     <nav
+                        v-reveal:stagger="{ delay: 150 }"
                         aria-label="Primary"
                         class="hidden flex-wrap items-center gap-8 pt-1 text-md text-foreground sm:flex"
                     >
@@ -84,15 +84,20 @@ const navItems: NavItem[] = [
 
                 <section class="pt-14">
                     <h1
+                        v-reveal:words="{ stagger: 95 }"
                         class="text-2xl font-semibold leading-tight tracking-[-0.03em] text-foreground sm:text-4xl text-balance"
                     >
                         I build clear interfaces for complex web products.
                     </h1>
-                    <p class="mt-5 text-lg leading-8 text-muted-foreground">
+                    <p
+                        v-reveal:words="{ delay: 260, stagger: 16, duration: 520 }"
+                        class="mt-5 text-lg leading-8 text-muted-foreground"
+                    >
                         {{ profile.intro }}
                     </p>
 
                     <div
+                        v-reveal:stagger="{ delay: 460 }"
                         class="mt-6 flex flex-wrap items-center gap-2.5 text-md text-muted-foreground"
                     >
                         <span class="inline-flex items-center gap-2">
@@ -126,6 +131,7 @@ const navItems: NavItem[] = [
                 class="scroll-mt-24 py-4 mb-8"
             >
                 <h2
+                    v-reveal:words
                     id="contact-heading"
                     class="text-xl font-semibold tracking-[-0.03em] text-foreground"
                 >
@@ -133,11 +139,13 @@ const navItems: NavItem[] = [
                 </h2>
 
                 <div
-                    class="mt-6 grid max-w-[24rem] grid-cols-[5.8rem_minmax(0,1fr)] gap-x-12 gap-y-4"
+                    v-reveal:stagger="{ y: 14 }"
+                    class="mt-6 flex max-w-[24rem] flex-col gap-y-5 sm:grid sm:grid-cols-[5.8rem_minmax(0,1fr)] sm:gap-x-12 sm:gap-y-4"
                 >
-                    <template
+                    <div
                         v-for="entry in contactLinks"
                         :key="entry.label"
+                        class="flex flex-col gap-y-1 sm:contents"
                     >
                         <p class="text-md text-muted-foreground">
                             {{ entry.label }}
@@ -160,14 +168,17 @@ const navItems: NavItem[] = [
                         >
                             {{ entry.value }}
                         </a>
-                    </template>
+                    </div>
                 </div>
             </section>
 
             <footer
                 class="mt-auto flex flex-wrap items-center gap-8 border-t border-border py-7 text-sm text-muted-foreground"
             >
-                <div class="flex flex-wrap items-center gap-8">
+                <div
+                    v-reveal:stagger
+                    class="flex flex-wrap items-center gap-8"
+                >
                     <RouterLink
                         to="/privacy"
                         class="transition-opacity hover:opacity-70 underline"
