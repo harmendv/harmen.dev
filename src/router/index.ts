@@ -4,6 +4,13 @@ import HomePage from '@/pages/HomePage.vue';
 import PrivacyPage from '@/pages/PrivacyPage.vue';
 import TermsPage from '@/pages/TermsPage.vue';
 
+declare module 'vue-router' {
+  interface RouteMeta {
+    title?: string;
+    description?: string;
+  }
+}
+
 const router = createRouter({
   history: createWebHistory(),
   routes: [

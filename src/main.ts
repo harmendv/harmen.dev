@@ -8,5 +8,7 @@ import { createApp } from 'vue';
 
 import App from './App.vue';
 import router from './router';
+import { animePlugin } from './plugins/anime';
 
-createApp(App).use(router).mount('#app');
+// Flip `blur` to true to re-enable the (heavier) blur on reveals.
+createApp(App).use(router).use(animePlugin, { blur: false }).mount('#app');
