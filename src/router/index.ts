@@ -19,9 +19,9 @@ const router = createRouter({
             name: "home",
             component: HomePage,
             meta: {
-                title: "Harmen de Vries | Frontend Developer",
+                title: "harmen.dev",
                 description:
-                    "Frontend portfolio of Harmen de Vries, focused on clean web interfaces, design systems, and developer tooling.",
+                    "Portfolio of Harmen, focused on clean web interfaces, design systems, and developer tooling.",
             },
         },
         {
@@ -29,7 +29,7 @@ const router = createRouter({
             name: "privacy",
             component: PrivacyPage,
             meta: {
-                title: "Privacy Policy | Harmen de Vries",
+                title: "Privacy Policy | harmen.dev",
                 description:
                     "Privacy policy for harmen.dev and related subdomains, including analytics, advertising, cookies, and third-party services.",
             },
@@ -39,7 +39,7 @@ const router = createRouter({
             name: "terms",
             component: TermsPage,
             meta: {
-                title: "Terms of Use | Harmen de Vries",
+                title: "Terms of Use | harmen.dev",
                 description:
                     "Terms of use for harmen.dev covering content ownership, informational use, third-party links, and updates.",
             },
@@ -66,9 +66,9 @@ const router = createRouter({
 });
 
 router.afterEach((to) => {
-    const defaultTitle = "Harmen de Vries | Frontend Developer";
+    const defaultTitle = "harmen.dev";
     const defaultDescription =
-        "Frontend portfolio of Harmen de Vries, focused on clean web interfaces, design systems, and developer tooling.";
+        "Portfolio of Harmen, focused on clean web interfaces, design systems, and developer tooling.";
 
     document.title = to.meta.title ?? defaultTitle;
 

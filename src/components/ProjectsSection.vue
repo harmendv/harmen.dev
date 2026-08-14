@@ -15,7 +15,6 @@ defineProps<{
         class="scroll-mt-24 py-4"
     >
         <h2
-            v-reveal:words
             id="projects-heading"
             class="mb-5 text-xl font-semibold tracking-[-0.03em] text-foreground"
         >
@@ -26,7 +25,6 @@ defineProps<{
             <a
                 v-for="project in projects"
                 :key="project.title"
-                v-reveal:block
                 :href="project.href"
                 target="_blank"
                 rel="noreferrer"

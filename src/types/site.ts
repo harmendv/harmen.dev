@@ -27,7 +27,6 @@ export type IconName =
 export interface Profile {
     name: string;
     role: string;
-    email: string;
     github: string;
     website: string;
     intro: string;

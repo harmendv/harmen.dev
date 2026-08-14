@@ -15,7 +15,6 @@ defineProps<{
         class="scroll-mt-24 py-4"
     >
         <h2
-            v-reveal:words
             id="experience-heading"
             class="text-xl font-semibold tracking-[-0.03em] text-foreground"
         >
@@ -26,7 +25,6 @@ defineProps<{
             <article
                 v-for="item in experience"
                 :key="`${item.period}-${item.role}`"
-                v-reveal:block
                 class="grid gap-3 sm:grid-cols-[5.8rem_minmax(0,1fr)] sm:gap-12"
             >
                 <p class="text-sm leading-7 text-muted-foreground">

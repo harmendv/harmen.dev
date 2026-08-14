@@ -4,7 +4,6 @@ import { RouterLink } from "vue-router";
 
 import ContentBadge from "@/components/ContentBadge.vue";
 import ExperienceSection from "@/components/ExperienceSection.vue";
-import MobileMenu from "@/components/MobileMenu.vue";
 import ProjectsSection from "@/components/ProjectsSection.vue";
 import { contactLinks, experience, profile, projects } from "@/content/site";
 
@@ -32,7 +31,6 @@ const navItems: NavItem[] = [
             <header class="pb-8">
                 <div class="flex items-start justify-between gap-6">
                     <RouterLink
-                        v-logo
                         to="/"
                         class="w-fit"
                         aria-label="Go to home page"
@@ -44,24 +42,13 @@ const navItems: NavItem[] = [
                             >
                                 {{ profile.name }}
                             </span>
-                            <img
-                                src="/star.svg"
-                                alt=""
-                                aria-hidden="true"
-                                class="-mt-1.5 -ml-1.5 h-5 w-5"
-                            />
                         </div>
-                        <p
-                            class="mt-1 text-md leading-none text-muted-foreground"
-                        >
-                            {{ profile.role }}
-                        </p>
+
                     </RouterLink>
 
                     <nav
-                        v-reveal:stagger="{ delay: 150 }"
                         aria-label="Primary"
-                        class="hidden flex-wrap items-center gap-8 pt-1 text-md text-foreground sm:flex"
+                        class="hidden flex-wrap items-center justify-end gap-x-6 gap-y-1 pt-1 text-md text-foreground sm:flex"
                     >
                         <RouterLink
                             v-for="item in navItems"
@@ -73,35 +60,21 @@ const navItems: NavItem[] = [
                             {{ item.label }}
                         </RouterLink>
                     </nav>
-
-                    <MobileMenu
-                        :name="profile.name"
-                        :role="profile.role"
-                        :nav-items="navItems"
-                        :contact-links="contactLinks"
-                    />
                 </div>
 
                 <section class="pt-14">
                     <h1
-                        v-reveal:words="{ stagger: 95 }"
-                        class="text-2xl font-semibold leading-tight tracking-[-0.03em] text-foreground sm:text-4xl text-balance"
+                        class="font-mono text-2xl font-semibold leading-tight tracking-[-0.03em] text-foreground sm:text-4xl text-balance"
                     >
-                        I build clear interfaces for complex web products.
+                        I build stuff;
                     </h1>
                     <p
-                        v-reveal:words="{
-                            delay: 260,
-                            stagger: 16,
-                            duration: 520,
-                        }"
                         class="mt-5 text-lg leading-8 text-muted-foreground"
                     >
                         {{ profile.intro }}
                     </p>
 
                     <div
-                        v-reveal:stagger="{ delay: 460 }"
                         class="mt-6 flex flex-wrap items-center gap-2.5 text-md text-muted-foreground"
                     >
                         <span class="inline-flex items-center gap-2">
@@ -135,7 +108,6 @@ const navItems: NavItem[] = [
                 class="scroll-mt-24 py-4 mb-8"
             >
                 <h2
-                    v-reveal:words
                     id="contact-heading"
                     class="text-xl font-semibold tracking-[-0.03em] text-foreground"
                 >
@@ -143,7 +115,6 @@ const navItems: NavItem[] = [
                 </h2>
 
                 <div
-                    v-reveal:stagger="{ y: 14 }"
                     class="mt-6 flex max-w-[24rem] flex-col gap-y-5 sm:grid sm:grid-cols-[5.8rem_minmax(0,1fr)] sm:gap-x-12 sm:gap-y-4"
                 >
                     <div
@@ -180,7 +151,6 @@ const navItems: NavItem[] = [
                 class="mt-auto flex flex-wrap items-center gap-8 border-t border-border py-7 text-sm text-muted-foreground"
             >
                 <div
-                    v-reveal:stagger
                     class="flex flex-wrap items-center gap-8"
                 >
                     <RouterLink

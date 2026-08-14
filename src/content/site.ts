@@ -6,9 +6,8 @@ import type {
 } from "@/types/site";
 
 export const profile: Profile = {
-    name: "Harmen de Vries",
+    name: "harmen.dev",
     role: "Frontend Developer",
-    email: "hello@harmen.dev",
     github: "https://github.com/harmendv",
     website: "https://harmen.dev",
     intro: "I like turning complex workflows into clear, maintainable UI — whether that’s a booking flow, internal tool, content management interface, search widget, or component library. My work sits close to the product: structured, usable, and built to last.",
