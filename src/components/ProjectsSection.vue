@@ -28,7 +28,7 @@ defineProps<{
                 :href="project.href"
                 target="_blank"
                 rel="noreferrer"
-                class="block rounded-[0.55rem] border border-border bg-card px-4 py-4 shadow-xs shadow-gray-100 transition hover:border-primary hover:opacity-85 hover:shadow-gray-200 sm:px-5"
+                class="block rounded-[0.55rem] border border-border bg-card px-4 py-4 shadow-xs shadow-gray-100 dark:shadow-black transition hover:border-primary hover:opacity-85 hover:shadow-gray-200 dark:hover:shadow-black sm:px-5"
                 :aria-label="`${project.title} project link${project.href.startsWith('http') ? ', opens in a new tab' : ''}`"
                 :title="`Open ${project.title}`"
             >

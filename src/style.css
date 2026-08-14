@@ -33,6 +33,23 @@
     --ring: rgb(23 71 223);
 }
 
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background: #0e0f13;
+        --foreground: #e8e9ee;
+        --card: #16171d;
+        --card-foreground: #e8e9ee;
+        --primary: rgb(96 140 255);
+        --primary-foreground: #0b0d12;
+        --secondary: #1e2027;
+        --secondary-foreground: #b4b7c2;
+        --muted: #1a1c22;
+        --muted-foreground: #9a9dab;
+        --border: #262830;
+        --ring: rgb(96 140 255);
+    }
+}
+
 @layer base {
     * {
         @apply border-border;
