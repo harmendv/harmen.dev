@@ -73,7 +73,7 @@ const iconData = computed(() => {
 </script>
 
 <template>
-    <Badge variant="outline">
+    <Badge variant="default">
         <span class="inline-flex items-center gap-1.5">
             <svg
                 v-if="iconData"
