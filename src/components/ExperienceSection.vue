@@ -28,7 +28,7 @@ defineProps<{
                     :key="`${item.period}-${item.role}`"
                     class="grid gap-3 sm:grid-cols-[5.8rem_minmax(0,1fr)] sm:gap-12 border-b pb-10 last:border-b-0"
                 >
-                    <p class="text-sm leading-7 text-muted-foreground">
+                    <p class="text-sm leading-7 text-primary">
                         {{ item.period }}
                     </p>
                     <div>

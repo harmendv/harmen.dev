@@ -25,10 +25,10 @@ export type IconName =
     | "figma";
 
 export interface Profile {
-    name: string;
     role: string;
     github: string;
     website: string;
+    title: string;
     intro: string;
     summary: string;
     stack: ContentBadgeItem[];

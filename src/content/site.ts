@@ -6,10 +6,10 @@ import type {
 } from "@/types/site";
 
 export const profile: Profile = {
-    name: "harmen.dev",
     role: "Frontend Developer",
     github: "https://github.com/harmendv",
     website: "https://harmen.dev",
+    title: "I build stuff",
     intro: "I like turning complex workflows into clear, maintainable UI — whether that’s a booking flow, internal tool, content management interface, search widget, or component library. My work sits close to the product: structured, usable, and built to last.",
     summary: "",
     stack: [

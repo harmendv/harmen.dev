@@ -37,9 +37,10 @@ const currentYear = new Date().getFullYear();
                     >
                         <div class="flex items-start gap-1.5">
                             <span
-                                class="text-xl font-semibold leading-none text-foreground"
+                                class="text-xl font-semibold leading-none text-foreground flex items-center gap-2"
                             >
-                                {{ profile.name }}
+                                <img src="/logo.svg" alt="Logo" class="w-5">
+                                harmen.dev
                             </span>
                         </div>
 
@@ -65,7 +66,7 @@ const currentYear = new Date().getFullYear();
                     <h1
                         class="font-hero text-5xl font-bold leading-tight tracking-[-0.03em] text-foreground sm:text-7xl text-balance"
                     >
-                        I build stuff;
+                        {{ profile.title }}<span class="text-primary">;</span>
                     </h1>
                     <p
                         class="mt-5 text-lg leading-8 text-muted-foreground"
@@ -79,7 +80,7 @@ const currentYear = new Date().getFullYear();
                         <span class="inline-flex items-center gap-2">
                             <Heart
                                 aria-hidden="true"
-                                class="size-5 fill-pink-600 text-pink-600"
+                                class="size-4 text-transparent fill-gray-800"
                             />
                             Favorite stack
                         </span>
@@ -115,7 +116,7 @@ const currentYear = new Date().getFullYear();
                         id="contact-heading"
                         class="font-hero text-4xl font-bold leading-tight tracking-[-0.03em] text-foreground sm:text-5xl"
                     >
-                        Let's talk.
+                        Let's talk<span class="text-primary">.</span>
                     </h2>
 
                     <div
