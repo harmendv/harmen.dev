@@ -34,10 +34,16 @@ export interface Profile {
     stack: ContentBadgeItem[];
 }
 
+/** Optional lifecycle marker shown as a badge on the project card. */
+export type ProjectStatus = "new" | "deprecated";
+
 export interface Project {
     title: string;
     description: string;
     href: string;
+    /** First public release, as `YYYY-MM`. */
+    released?: string;
+    status?: ProjectStatus;
     tags: ContentBadgeItem[];
 }
 

@@ -1,4 +1,6 @@
 <script setup>
+import ThemeToggle from "@/components/ThemeToggle.vue";
+
 defineProps({
     title: {
         type: String,
@@ -17,6 +19,10 @@ defineProps({
         class="px-6 py-8 sm:px-8 lg:px-10"
     >
         <div class="mx-auto flex min-h-[calc(100vh-4rem)] max-w-4xl flex-col">
+            <div class="mb-6 flex justify-end">
+                <ThemeToggle />
+            </div>
+
             <div class="max-w-4xl">
                 <h1
                     class="text-3xl font-semibold tracking-tight text-balance sm:text-4xl"

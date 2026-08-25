@@ -24,10 +24,24 @@ export const profile: Profile = {
 
 export const projects: Project[] = [
     {
+        title: "Image Gallery Kit",
+        description:
+            "An SSR-safe Vue 3 image gallery with an animated preview grid, a fullscreen dialog carousel, and tiles that fly between views.",
+        href: "https://github.com/harmendv/image-gallery-kit",
+        released: "2026-04",
+        status: "new",
+        tags: [
+            { icon: "vuejs", text: "Vue.js" },
+            { icon: "typescript", text: "TypeScript" },
+            { icon: "vite", text: "Vite.js" },
+        ],
+    },
+    {
         title: "Guitar Scales",
         description:
             "A visual fretboard tool that helps guitarists explore scales, modes, positions, and tunings without getting lost in theory.",
         href: "https://guitarscales.harmen.dev",
+        released: "2021-12",
         tags: [
             { icon: "vuejs", text: "Vue.js" },
             { icon: "typescript", text: "TypeScript" },
@@ -40,6 +54,7 @@ export const projects: Project[] = [
         description:
             "An opinionated Vue 3 component library focused on accessible, reusable UI patterns for modern web applications.",
         href: "https://github.com/libvue/core",
+        released: "2020-11",
         tags: [
             { icon: "vuejs", text: "Vue.js" },
             { icon: "javascript", text: "JavaScript" },
@@ -52,6 +67,7 @@ export const projects: Project[] = [
         description:
             "A Laravel Orion compatible repository-based JavaScript http-client powered by axios.",
         href: "https://github.com/libvue/laravel-orion-api",
+        released: "2022-12",
         tags: [
             { icon: "javascript", text: "JavaScript" },
             { icon: "vite", text: "Vite.js" },
