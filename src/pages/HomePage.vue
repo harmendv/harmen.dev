@@ -5,6 +5,7 @@ import { RouterLink } from "vue-router";
 import ContentBadge from "@/components/ContentBadge.vue";
 import ExperienceSection from "@/components/ExperienceSection.vue";
 import ProjectsSection from "@/components/ProjectsSection.vue";
+import ThemeToggle from "@/components/ThemeToggle.vue";
 import { contactLinks, experience, profile, projects } from "@/content/site";
 
 interface NavItem {
@@ -16,7 +17,7 @@ interface NavItem {
 }
 
 const navItems: NavItem[] = [
-    { label: "Projects", to: { path: "/", hash: "#projects" } },
+    { label: "Open Source", to: { path: "/", hash: "#open-source" } },
     { label: "Experience", to: { path: "/", hash: "#experience" } },
     { label: "Contact", to: { path: "/", hash: "#contact" } },
 ];
@@ -28,7 +29,7 @@ const currentYear = new Date().getFullYear();
     <main id="main-content">
         <header class="px-6 pb-8 pt-10 sm:px-8 sm:pt-12">
             <div class="mx-auto max-w-4xl">
-                <div class="flex items-start justify-between gap-6">
+                <div class="flex items-center justify-between gap-6">
                     <RouterLink
                         to="/"
                         class="w-fit"
@@ -39,27 +40,34 @@ const currentYear = new Date().getFullYear();
                             <span
                                 class="text-xl font-semibold leading-none text-foreground flex items-center gap-2"
                             >
-                                <img src="/logo.svg" alt="Logo" class="w-5">
+                                <img
+                                    src="/logo.svg"
+                                    alt="Logo"
+                                    class="w-5"
+                                />
                                 harmen.dev
                             </span>
                         </div>
-
                     </RouterLink>
 
-                    <nav
-                        aria-label="Primary"
-                        class="hidden flex-wrap items-center justify-end gap-x-6 gap-y-1 pt-1 text-md text-foreground sm:flex"
-                    >
-                        <RouterLink
-                            v-for="item in navItems"
-                            :key="item.label"
-                            :to="item.to"
-                            class="transition-opacity hover:opacity-70"
-                            :title="`Go to ${item.label}`"
+                    <div class="flex items-center justify-end gap-x-6">
+                        <nav
+                            aria-label="Primary"
+                            class="hidden flex-wrap items-center justify-end gap-x-6 gap-y-1 text-md text-foreground sm:flex"
                         >
-                            {{ item.label }}
-                        </RouterLink>
-                    </nav>
+                            <RouterLink
+                                v-for="item in navItems"
+                                :key="item.label"
+                                :to="item.to"
+                                class="transition-colors hover:text-primary"
+                                :title="`Go to ${item.label}`"
+                            >
+                                {{ item.label }}
+                            </RouterLink>
+                        </nav>
+
+                        <ThemeToggle />
+                    </div>
                 </div>
 
                 <section class="pt-14">
@@ -68,9 +76,7 @@ const currentYear = new Date().getFullYear();
                     >
                         {{ profile.title }}<span class="text-primary">;</span>
                     </h1>
-                    <p
-                        class="mt-5 text-lg leading-8 text-muted-foreground"
-                    >
+                    <p class="mt-5 text-lg leading-8 text-muted-foreground">
                         {{ profile.intro }}
                     </p>
 
@@ -80,7 +86,7 @@ const currentYear = new Date().getFullYear();
                         <span class="inline-flex items-center gap-2">
                             <Heart
                                 aria-hidden="true"
-                                class="size-4 text-transparent fill-gray-800"
+                                class="size-4 text-transparent fill-foreground"
                             />
                             Favorite stack
                         </span>
