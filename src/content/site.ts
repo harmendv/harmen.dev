@@ -27,7 +27,7 @@ export const projects: Project[] = [
         title: "Image Gallery Kit",
         description:
             "An SSR-safe Vue 3 image gallery with an animated preview grid, a fullscreen dialog carousel, and tiles that fly between views.",
-        href: "https://github.com/harmendv/image-gallery-kit",
+        href: "https://harmendv.github.io/image-gallery-kit/",
         released: "2026-04",
         status: "new",
         tags: [
