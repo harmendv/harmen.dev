@@ -42,8 +42,10 @@ const currentYear = new Date().getFullYear();
                             >
                                 <img
                                     src="/logo.svg"
-                                    alt="Logo"
-                                    class="w-5"
+                                    alt=""
+                                    width="76"
+                                    height="98"
+                                    class="h-auto w-5"
                                 />
                                 harmen.dev
                             </span>

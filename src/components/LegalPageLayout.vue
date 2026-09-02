@@ -1,5 +1,6 @@
 <script setup>
-import ThemeToggle from "@/components/ThemeToggle.vue";
+import { ArrowLeft } from "lucide-vue-next";
+import { RouterLink } from "vue-router";
 
 defineProps({
     title: {
@@ -19,8 +20,18 @@ defineProps({
         class="px-6 py-8 sm:px-8 lg:px-10"
     >
         <div class="mx-auto flex min-h-[calc(100vh-4rem)] max-w-4xl flex-col">
-            <div class="mb-6 flex justify-end">
-                <ThemeToggle />
+            <div class="mb-8">
+                <RouterLink
+                    to="/"
+                    class="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                    title="Go to home page"
+                >
+                    <ArrowLeft
+                        aria-hidden="true"
+                        class="size-4"
+                    />
+                    Back to harmen.dev
+                </RouterLink>
             </div>
 
             <div class="max-w-4xl">
