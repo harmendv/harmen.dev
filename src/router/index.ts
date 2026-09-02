@@ -19,7 +19,7 @@ const router = createRouter({
             name: "home",
             component: HomePage,
             meta: {
-                title: "harmen.dev",
+                title: "Harmen de Vries | Frontend Developer",
                 description:
                     "Portfolio of Harmen, focused on clean web interfaces, design systems, and developer tooling.",
             },
@@ -29,7 +29,7 @@ const router = createRouter({
             name: "privacy",
             component: PrivacyPage,
             meta: {
-                title: "Privacy Policy | harmen.dev",
+                title: "Privacy Policy | Harmen de Vries",
                 description:
                     "Privacy policy for harmen.dev and related subdomains, including analytics, advertising, cookies, and third-party services.",
             },
@@ -39,7 +39,7 @@ const router = createRouter({
             name: "terms",
             component: TermsPage,
             meta: {
-                title: "Terms of Use | harmen.dev",
+                title: "Terms of Use | Harmen de Vries",
                 description:
                     "Terms of use for harmen.dev covering content ownership, informational use, third-party links, and updates.",
             },
@@ -66,7 +66,7 @@ const router = createRouter({
 });
 
 router.afterEach((to) => {
-    const defaultTitle = "harmen.dev";
+    const defaultTitle = "Harmen de Vries | Frontend Developer";
     const defaultDescription =
         "Portfolio of Harmen, focused on clean web interfaces, design systems, and developer tooling.";
 
@@ -77,6 +77,14 @@ router.afterEach((to) => {
         descriptionTag.setAttribute(
             "content",
             to.meta.description ?? defaultDescription
+        );
+    }
+
+    const canonicalTag = document.querySelector('link[rel="canonical"]');
+    if (canonicalTag) {
+        canonicalTag.setAttribute(
+            "href",
+            new URL(to.path, import.meta.env.VITE_SITE_URL).href
         );
     }
 });
