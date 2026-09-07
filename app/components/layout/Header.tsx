@@ -18,11 +18,17 @@ export function Header() {
         aria-label="Primary"
         className="hidden sm:flex items-center justify-end gap-x-6 text-md text-foreground ml-auto"
       >
-        <a className="hover:text-primary" href="#open-source">Open Source</a>
-        <a className="hover:text-primary" href="#experience">Experience</a>
-        <a className="hover:text-primary" href="#contact">Contact</a>
+        <a className="hover:text-primary" href="#open-source">
+          Open Source
+        </a>
+        <a className="hover:text-primary" href="#experience">
+          Experience
+        </a>
+        <a className="hover:text-primary" href="#contact">
+          Contact
+        </a>
       </nav>
-      <ThemeSwitcher className="ml-auto sm:ml-4"/>
+      <ThemeSwitcher className="ml-auto sm:ml-4" />
     </header>
   );
 }
