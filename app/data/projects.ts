@@ -11,7 +11,7 @@ import {
 
 export const projects: ProjectItem[] = [
   {
-    href: "",
+    href: "https://harmendv.github.io/image-gallery-kit/",
     title: "Image Gallery Kit",
     description:
       "An SSR-safe Vue 3 image gallery with an animated preview grid, a fullscreen dialog carousel, and tiles that fly between views.",
@@ -24,7 +24,7 @@ export const projects: ProjectItem[] = [
     releaseDate: "April 2026",
   },
   {
-    href: "",
+    href: "https://github.com/libvue/laravel-orion-api",
     title: "@libvue/laravel-orion-api",
     description:
       "A Laravel Orion compatible repository-based JavaScript http-client powered by axios.",
@@ -35,7 +35,7 @@ export const projects: ProjectItem[] = [
     releaseDate: "December 2022",
   },
   {
-    href: "",
+    href: "https://guitarscales.harmen.dev/",
     title: "Guitar Scales",
     description:
       "A visual fretboard tool that helps guitarists explore scales, modes, positions, and tunings without getting lost in theory.",
@@ -48,7 +48,7 @@ export const projects: ProjectItem[] = [
     releaseDate: "December 2021",
   },
   {
-    href: "",
+    href: "https://github.com/libvue/core",
     title: "Libvue Component Library",
     description:
       "An opinionated Vue 3 component library focused on accessible, reusable UI patterns for modern web applications.",
