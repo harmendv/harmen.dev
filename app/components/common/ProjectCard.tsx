@@ -7,6 +7,8 @@ export const ProjectCard = ({ href, title, stack, description, releaseDate }: Pr
   return (
     <a
       href={href}
+      target="_blank"
+      rel="noopener"
       className="flex flex-col rounded-md border border-border bg-card px-4 py-4 shadow-md shadow-shadow  hover:border-primary hover:opacity-85  sm:px-5"
     >
       <h3 className="text-md font-semibold text-foreground">{title}</h3>
