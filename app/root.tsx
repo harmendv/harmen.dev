@@ -39,15 +39,15 @@ export default function App() {
 
   const setThemeClass = (theme: 'light' | 'dark') => {
     if(theme === 'light') {
-      document.body.classList.add('light')
-      document.body.classList.remove('dark')
+      document.documentElement.classList.add('light')
+      document.documentElement.classList.remove('dark')
     } else {
-      document.body.classList.add('dark')
-      document.body.classList.remove('light')
+      document.documentElement.classList.add('dark')
+      document.documentElement.classList.remove('light')
     }
   };
   const removeThemeClass = () => {
-    document.body.classList.remove('light', 'dark')
+    document.documentElement.classList.remove('light', 'dark')
   };
 
   useEffect(() => {
@@ -74,6 +74,12 @@ export default function App() {
   return (
     <html lang="en">
     <head>
+      <script
+        dangerouslySetInnerHTML={{
+          __html:
+            "try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.classList.add(t)}catch(e){}",
+        }}
+      />
       <Meta />
       <Links />
     </head>
