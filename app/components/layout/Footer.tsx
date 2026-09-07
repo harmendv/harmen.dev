@@ -19,11 +19,11 @@ export function Footer() {
             </div>
           </div>
         </div>
-        <div className="w-full flex flex-col sm:flex-row pb-6">
+        <div className="w-full flex flex-col sm:flex-row pb-2 sm:pb-6">
           <div className="text-muted-foreground">&copy; 2026 harmen.dev</div>
           <nav className="sm:ml-auto flex gap-4 text-muted-foreground" aria-label="Legal Links">
-            <NavLink to="/privacy">Privacy</NavLink>
-            <NavLink to="/terms">Terms of use</NavLink>
+            <NavLink className="hover:text-primary underline" to="/privacy">Privacy</NavLink>
+            <NavLink className="hover:text-primary underline" to="/terms">Terms of use</NavLink>
           </nav>
         </div>
       </div>
