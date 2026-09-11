@@ -6,6 +6,8 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+@source "../app"
+
 :root {
   color-scheme: light dark;
 }

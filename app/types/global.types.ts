@@ -5,12 +5,18 @@ export type StackItem = {
   icon: IconType;
 };
 
+export type ProjectNote = {
+  name: string;
+  className?: string;
+}
+
 export type ProjectItem = {
   href: string;
   title: string;
   stack: StackItem[];
   description: string;
   releaseDate: string;
+  notes: ProjectNote[]
 };
 
 export type ExperienceItem = {

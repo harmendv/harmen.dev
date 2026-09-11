@@ -13,13 +13,14 @@ export default function Index() {
           Open Source
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
-          {projects.map(({ href, title, description, stack, releaseDate }) => (
+          {projects.map(({ href, title, description, stack, releaseDate, notes }) => (
             <ProjectCard
               key={title}
               href={href}
               title={title}
               description={description}
               stack={stack}
+              notes={notes}
               releaseDate={releaseDate}
             />
           ))}

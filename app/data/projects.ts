@@ -21,16 +21,23 @@ export const projects: ProjectItem[] = [
       { name: "Vite.js", icon: SiVite },
       { name: "Claude Code", icon: SiClaudecode },
     ],
+    notes: [
+      { name: 'New', className: 'border !text-red-500 bg-transparent border-red-500' },
+      { name: 'AI Generated', className: 'border !text-amber-500 bg-transparent border-amber-500' }
+    ],
     releaseDate: "April 2026",
   },
   {
     href: "https://github.com/libvue/laravel-orion-api",
-    title: "@libvue/laravel-orion-api",
+    title: "Libvue Laravel Orion API",
     description:
       "A Laravel Orion compatible repository-based JavaScript http-client powered by axios.",
     stack: [
       { name: "Vue.js", icon: SiVuedotjs },
       { name: "JavaScript", icon: SiJavascript },
+    ],
+    notes: [
+      { name: 'Archived', className: 'border !text-blue-500 bg-transparent border-blue-500' },
     ],
     releaseDate: "December 2022",
   },
@@ -45,6 +52,7 @@ export const projects: ProjectItem[] = [
       { name: "Tailwind", icon: SiTailwindcss },
       { name: "Vite.js", icon: SiVite },
     ],
+    notes: [],
     releaseDate: "December 2021",
   },
   {
@@ -57,6 +65,9 @@ export const projects: ProjectItem[] = [
       { name: "JavaScript", icon: SiJavascript },
       { name: "SCSS", icon: SiSass },
       { name: "Vite.js", icon: SiVite },
+    ],
+    notes: [
+      { name: 'Archived', className: 'border !text-blue-500 bg-transparent border-blue-500' },
     ],
     releaseDate: "November 2020",
   },
