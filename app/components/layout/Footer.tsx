@@ -3,13 +3,13 @@ import { NavLink } from "react-router";
 export function Footer() {
   return (
     <footer className="bg-muted mt-auto">
-      <div className="container mx-auto max-w-5xl px-6 pb-8 pt-10 sm:px-9 sm:pt-12 flex w-full flex flex-col">
+      <div className="container mx-auto max-w-5xl px-6 pb-8 pt-10 sm:px-9 sm:pt-12 flex w-full flex-col">
         <div className="flex flex-col sm:flex-row mb-12">
           <h3 id="contact" className="mb-5 sm:mb-0 text-5xl font-display font-bold">
             Let's talk<span className="text-primary">.</span>
           </h3>
           <div className="sm:ml-auto sm:text-right grid grid-cols-1 gap-4">
-            <div className="grid grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-6">
               <div className="text-md text-muted-foreground">GitHub</div>
               <a
                 href="https://github.com/harmendv"
@@ -20,7 +20,7 @@ export function Footer() {
                 github.com/harmendv
               </a>
             </div>
-            <div className="grid grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-6">
               <div className="text-md text-muted-foreground">LinkedIn</div>
               <a
                 href="https://www.linkedin.com/in/harmendv"
