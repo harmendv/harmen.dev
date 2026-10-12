@@ -3,7 +3,14 @@ import { Badge } from "./Badge";
 
 type ProjectCardProps = ProjectItem;
 
-export const ProjectCard = ({ href, title, stack, description, releaseDate, notes }: ProjectCardProps) => {
+export const ProjectCard = ({
+  href,
+  title,
+  stack,
+  description,
+  releaseDate,
+  notes,
+}: ProjectCardProps) => {
   return (
     <a
       href={href}
@@ -11,12 +18,14 @@ export const ProjectCard = ({ href, title, stack, description, releaseDate, note
       rel="noopener"
       className="flex flex-col rounded-md border border-border bg-card px-4 py-4 shadow-md shadow-shadow  hover:border-primary hover:opacity-85  sm:px-5"
     >
-      <h3 className={`text-md font-semibold text-foreground flex text-left w-full ${notes.length > 0 ? 'gap-2' : 'gap-0'}`}>
+      <h3
+        className={`text-md font-semibold text-foreground flex text-left w-full ${notes.length > 0 ? "gap-2" : "gap-0"}`}
+      >
         <div className={`flex flex-wrap gap-1`}>
           {notes.map(({ name, className }) => (
-              <Badge key={name} className={`text-xs ${className}`}>
-                {name}
-              </Badge>
+            <Badge key={name} className={`text-xs ${className}`}>
+              {name}
+            </Badge>
           ))}
         </div>
         {title}

@@ -41,8 +41,8 @@
 }
 
 @theme {
-  --font-sans: "IBM Plex Sans Variable", sans-serif;
-  --font-display: "Instrument Sans Variable", sans-serif;
+  --font-sans: "IBM Plex Sans Variable", "IBM Plex Sans Variable fallback", sans-serif;
+  --font-display: "Instrument Sans Variable", "Instrument Sans Variable fallback", sans-serif;
   --font-weight-normal: 400;
   --font-weight-medium: 500;
   --font-weight-semibold: 600;

@@ -8,7 +8,7 @@ export type StackItem = {
 export type ProjectNote = {
   name: string;
   className?: string;
-}
+};
 
 export type ProjectItem = {
   href: string;
@@ -16,7 +16,7 @@ export type ProjectItem = {
   stack: StackItem[];
   description: string;
   releaseDate: string;
-  notes: ProjectNote[]
+  notes: ProjectNote[];
 };
 
 export type ExperienceItem = {
