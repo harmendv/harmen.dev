@@ -1,8 +1,25 @@
 import { Links, Meta, Outlet, Scripts, ScrollRestoration } from "react-router";
 import stylesheet from "./styles/global.css?url";
+import instrumentSansLatin from "@fontsource-variable/instrument-sans/files/instrument-sans-latin-wght-normal.woff2?url";
+import ibmPlexSansLatin from "@fontsource-variable/ibm-plex-sans/files/ibm-plex-sans-latin-wght-normal.woff2?url";
 import { useEffect } from "react";
 
 export const links = () => [
+  // Preload the latin subsets so the web fonts are usually ready before first paint
+  {
+    rel: "preload",
+    href: instrumentSansLatin,
+    as: "font",
+    type: "font/woff2",
+    crossOrigin: "anonymous",
+  },
+  {
+    rel: "preload",
+    href: ibmPlexSansLatin,
+    as: "font",
+    type: "font/woff2",
+    crossOrigin: "anonymous",
+  },
   { rel: "stylesheet", href: stylesheet },
   { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
   { rel: "shortcut icon", href: "/favicon.ico" },
