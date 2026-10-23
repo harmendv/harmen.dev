@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "@fontsource-variable/instrument-sans/wght.css";
 @import "@fontsource-variable/ibm-plex-sans/wght.css";
+@import "./fallback-fonts.css";
 
 @plugin "@tailwindcss/typography";
 

@@ -1,0 +1,151 @@
+/* Instrument Sans: regular weights */
+@font-face {
+  font-family: "Instrument Sans Variable fallback";
+  src: local("Noto Sans"), local("NotoSans-Regular");
+  font-weight: 100 599;
+  size-adjust: 96.62%;
+  ascent-override: 100.39%;
+  descent-override: 25.87%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: "Instrument Sans Variable fallback";
+  src: local("Arial"), local("ArialMT");
+  font-weight: 100 599;
+  size-adjust: 102.74%;
+  ascent-override: 94.42%;
+  descent-override: 24.33%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: "Instrument Sans Variable fallback";
+  src: local("Helvetica Neue"), local("HelveticaNeue");
+  font-weight: 100 599;
+  size-adjust: 101.78%;
+  ascent-override: 95.31%;
+  descent-override: 24.56%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: "Instrument Sans Variable fallback";
+  src: local("Segoe UI"), local("SegoeUI");
+  font-weight: 100 599;
+  size-adjust: 103.3%;
+  ascent-override: 93.9%;
+  descent-override: 24.2%;
+  line-gap-override: 0%;
+}
+
+/* Instrument Sans: bold weights (hero and display headings), matched to the 700 cut */
+@font-face {
+  font-family: "Instrument Sans Variable fallback";
+  src: local("Noto Sans Bold"), local("NotoSans-Bold");
+  font-weight: 600 900;
+  size-adjust: 95.03%;
+  ascent-override: 102.07%;
+  descent-override: 26.31%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: "Instrument Sans Variable fallback";
+  src: local("Arial Bold"), local("Arial-BoldMT");
+  font-weight: 600 900;
+  size-adjust: 99.59%;
+  ascent-override: 97.4%;
+  descent-override: 25.1%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: "Instrument Sans Variable fallback";
+  src: local("Helvetica Neue Bold"), local("HelveticaNeue-Bold");
+  font-weight: 600 900;
+  size-adjust: 99.58%;
+  ascent-override: 97.41%;
+  descent-override: 25.1%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: "Instrument Sans Variable fallback";
+  src: local("Segoe UI Bold"), local("SegoeUI-Bold");
+  font-weight: 600 900;
+  size-adjust: 100.61%;
+  ascent-override: 96.41%;
+  descent-override: 24.85%;
+  line-gap-override: 0%;
+}
+
+/* IBM Plex Sans: regular weights */
+@font-face {
+  font-family: "IBM Plex Sans Variable fallback";
+  src: local("Noto Sans"), local("NotoSans-Regular");
+  font-weight: 100 599;
+  size-adjust: 95.15%;
+  ascent-override: 107.73%;
+  descent-override: 28.9%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: "IBM Plex Sans Variable fallback";
+  src: local("Arial"), local("ArialMT");
+  font-weight: 100 599;
+  size-adjust: 101.17%;
+  ascent-override: 101.32%;
+  descent-override: 27.18%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: "IBM Plex Sans Variable fallback";
+  src: local("Helvetica Neue"), local("HelveticaNeue");
+  font-weight: 100 599;
+  size-adjust: 100.22%;
+  ascent-override: 102.27%;
+  descent-override: 27.44%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: "IBM Plex Sans Variable fallback";
+  src: local("Segoe UI"), local("SegoeUI");
+  font-weight: 100 599;
+  size-adjust: 101.72%;
+  ascent-override: 100.76%;
+  descent-override: 27.03%;
+  line-gap-override: 0%;
+}
+
+/* IBM Plex Sans: semibold and up, matched to the 600 cut */
+@font-face {
+  font-family: "IBM Plex Sans Variable fallback";
+  src: local("Noto Sans Bold"), local("NotoSans-Bold");
+  font-weight: 600 900;
+  size-adjust: 92.84%;
+  ascent-override: 110.4%;
+  descent-override: 29.62%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: "IBM Plex Sans Variable fallback";
+  src: local("Arial Bold"), local("Arial-BoldMT");
+  font-weight: 600 900;
+  size-adjust: 97.3%;
+  ascent-override: 105.35%;
+  descent-override: 28.26%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: "IBM Plex Sans Variable fallback";
+  src: local("Helvetica Neue Bold"), local("HelveticaNeue-Bold");
+  font-weight: 600 900;
+  size-adjust: 97.29%;
+  ascent-override: 105.35%;
+  descent-override: 28.27%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: "IBM Plex Sans Variable fallback";
+  src: local("Segoe UI Bold"), local("SegoeUI-Bold");
+  font-weight: 600 900;
+  size-adjust: 98.3%;
+  ascent-override: 104.28%;
+  descent-override: 27.98%;
+  line-gap-override: 0%;
+}
