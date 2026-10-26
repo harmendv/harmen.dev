@@ -102,15 +102,24 @@ export default function App() {
           }}
         />
         <script
-          id="cookieyes"
-          type="text/javascript"
-          src="https://cdn-cookieyes.com/client_data/a25e03a7454a916f6568fa12fdd9a1c4/script.js"
-        ></script>
+          dangerouslySetInnerHTML={{
+            __html:
+              "(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W8VTG6PQ');",
+          }}
+        />
         <Meta />
         <Links />
       </head>
 
       <body className="bg-background">
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-W8VTG6PQ"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          ></iframe>
+        </noscript>
         <Outlet />
         <ScrollRestoration />
         <Scripts />
