@@ -101,6 +101,11 @@ export default function App() {
               "try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.classList.add(t)}catch(e){}",
           }}
         />
+        <script
+          id="cookieyes"
+          type="text/javascript"
+          src="https://cdn-cookieyes.com/client_data/a25e03a7454a916f6568fa12fdd9a1c4/script.js"
+        ></script>
         <Meta />
         <Links />
       </head>
