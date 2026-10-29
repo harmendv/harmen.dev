@@ -24,9 +24,10 @@ export const Hero = ({ className }: { className: string }) => {
               speed={50}
               style={{ display: 'inline-block' }}
               repeat={Infinity}
+              preRenderFirstString={true}
           />
       </h1>
-      <h2 className="font-sans text-sm sm:text-lg font-semibold mt-3">Senior Frontend Developer — Vue, TypeScript & Tailwind</h2>
+      <h2 className="font-sans text-sm sm:text-lg font-semibold mt-2">Senior Frontend Developer</h2>
       <p className="mt-5 text-lg leading-8 text-muted-foreground mb-5">
         I like turning complex workflows into clear, maintainable UI — whether that’s a booking
         flow, internal tool, content management interface, search widget, or component library. My
