@@ -52,7 +52,9 @@ export const projects: ProjectItem[] = [
       { name: "Tailwind", icon: SiTailwindcss },
       { name: "Vite.js", icon: SiVite },
     ],
-    notes: [],
+    notes: [
+      { name: "AI Enhanced", className: "border !text-indigo-500 bg-transparent border-indigo-500" },
+    ],
     releaseDate: "December 2021",
   },
   {

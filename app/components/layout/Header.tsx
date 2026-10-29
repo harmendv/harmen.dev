@@ -3,7 +3,7 @@ import { ThemeSwitcher } from "../common/ThemeSwitcher";
 
 export function Header() {
   return (
-    <header className="container mx-auto max-w-5xl px-6 pb-8 pt-10 sm:px-9 sm:pt-12 flex w-full items-center">
+    <header className="container mx-auto max-w-5xl px-6 pb-4 pt-10 sm:px-9 sm:pt-12 flex w-full items-center">
       <NavLink
         to="/"
         end
