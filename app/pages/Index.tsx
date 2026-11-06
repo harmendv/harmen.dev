@@ -1,5 +1,5 @@
 import { Hero } from "../components/common/Hero";
-import { ProjectCard } from "../components/common/ProjectCard";
+import { ProjectScroller } from "../components/common/ProjectScroller";
 import { ExperienceBlock } from "../components/common/ExperienceBlock";
 import { projects } from "../data/projects";
 import { experience } from "../data/experience";
@@ -8,24 +8,7 @@ export default function Index() {
   return (
     <>
       <Hero className="mb-12" />
-      <section className="mb-12">
-        <h2 id="open-source" className="font-semibold text-xl mb-6">
-          Open Source
-        </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
-          {projects.map(({ href, title, description, stack, releaseDate, notes }) => (
-            <ProjectCard
-              key={title}
-              href={href}
-              title={title}
-              description={description}
-              stack={stack}
-              notes={notes}
-              releaseDate={releaseDate}
-            />
-          ))}
-        </div>
-      </section>
+      <ProjectScroller id="projects" title="Projects" projects={projects} className="mb-12" />
       <section className="mb-12">
         <h2 id="experience" className="font-semibold text-xl mb-5">
           Experience

@@ -57,6 +57,9 @@ export const meta = () => [
   },
 ];
 
+const isTheme = (value: unknown): value is "light" | "dark" =>
+  value === "light" || value === "dark";
+
 export default function App() {
   const setThemeClass = (theme: "light" | "dark") => {
     if (theme === "light") {
@@ -75,8 +78,8 @@ export default function App() {
     function checkModeChange() {
       const item = localStorage.getItem("theme");
 
-      if (item) {
-        setThemeClass(item as "light" | "dark");
+      if (isTheme(item)) {
+        setThemeClass(item);
       } else {
         removeThemeClass();
       }
@@ -93,7 +96,7 @@ export default function App() {
   }, []);
 
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <script
           dangerouslySetInnerHTML={{
@@ -101,10 +104,11 @@ export default function App() {
               "try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.classList.add(t)}catch(e){}",
           }}
         />
+        {/* GTM (and the CookieYes tag it loads) only on the production host */}
         <script
           dangerouslySetInnerHTML={{
             __html:
-              "(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W8VTG6PQ');",
+              "if(location.hostname==='harmen.dev'){(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-W8VTG6PQ');}",
           }}
         />
         <Meta />

@@ -51,7 +51,44 @@
   --tracking-normal: 0em;
 }
 
+/*
+ * Distance from the viewport edge to the page content edge. Mirrors the
+ * `container mx-auto max-w-5xl px-6 sm:px-9` wrapper in Main/Header so
+ * full-bleed sections (the project scroller) can align with the content.
+ */
+:root {
+  --page-gutter: 1.5rem;
+  --page-max: 100vw;
+  --page-edge: calc((100vw - var(--page-max)) / 2 + var(--page-gutter));
+}
+@media (min-width: 40rem) {
+  :root {
+    --page-gutter: 2.25rem;
+    --page-max: 40rem;
+  }
+}
+@media (min-width: 48rem) {
+  :root {
+    --page-max: 48rem;
+  }
+}
+@media (min-width: 64rem) {
+  :root {
+    --page-max: 64rem;
+  }
+}
+
+@utility scrollbar-none {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 @layer base {
+  html {
+    overflow-x: clip;
+  }
   body {
     min-height: 100vh;
     display: flex;

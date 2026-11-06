@@ -4,12 +4,19 @@ import { useState, useEffect } from "react";
 
 type Theme = "light" | "dark" | undefined;
 
+// Anything other than "light"/"dark" (e.g. a stale value from an older version
+// of the site) is treated as "system" so the toggle can never get stuck.
+const readStoredTheme = (): Theme => {
+  const value = localStorage.getItem("theme");
+  return value === "light" || value === "dark" ? value : undefined;
+};
+
 export const ThemeSwitcher = ({ className }: { className: string | undefined }) => {
   const [theme, setTheme] = useState<Theme>(undefined);
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    setTheme((localStorage.getItem("theme") as Theme) ?? undefined);
+    setTheme(readStoredTheme());
     setLoaded(true);
   }, []);
 

@@ -13,6 +13,8 @@ export type ProjectNote = {
 export type ProjectItem = {
   href: string;
   title: string;
+  /** Square logo shown next to the title; falls back to the title's initial */
+  logo?: string;
   stack: StackItem[];
   description: string;
   releaseDate: string;
