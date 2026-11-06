@@ -7,12 +7,30 @@ import {
   SiTailwindcss,
   SiClaudecode,
   SiSass,
+  SiLaravel,
+  SiInertia,
 } from "@icons-pack/react-simple-icons";
 
 export const projects: ProjectItem[] = [
   {
+    href: "https://watzoujedoen.nl/",
+    title: "watzoujedoen.nl",
+    logo: "/projects/watzoujedoen.svg",
+    description:
+      "A Dutch 'statement of the week' site: one proposition every week, an anonymous vote, and instant results showing how everyone else voted.",
+    stack: [
+      { name: "Laravel", icon: SiLaravel },
+      { name: "Inertia", icon: SiInertia },
+      { name: "Vue.js", icon: SiVuedotjs },
+      { name: "Tailwind", icon: SiTailwindcss },
+    ],
+    notes: [{ name: "New", className: "border !text-red-500 bg-transparent border-red-500" }],
+    releaseDate: "November 2026",
+  },
+  {
     href: "https://harmendv.github.io/image-gallery-kit/",
     title: "Image Gallery Kit",
+    logo: "/projects/image-gallery-kit.svg",
     description:
       "An SSR-safe Vue 3 image gallery with an animated preview grid, a fullscreen dialog carousel, and tiles that fly between views.",
     stack: [
@@ -30,6 +48,7 @@ export const projects: ProjectItem[] = [
   {
     href: "https://github.com/libvue/laravel-orion-api",
     title: "Libvue Laravel Orion API",
+    logo: "/projects/libvue.png",
     description:
       "A Laravel Orion compatible repository-based JavaScript http-client powered by axios.",
     stack: [
@@ -44,6 +63,7 @@ export const projects: ProjectItem[] = [
   {
     href: "https://guitarscales.harmen.dev/",
     title: "Guitar Scales",
+    logo: "/projects/guitar-scales.svg",
     description:
       "A visual fretboard tool that helps guitarists explore scales, modes, positions, and tunings without getting lost in theory.",
     stack: [
@@ -53,13 +73,17 @@ export const projects: ProjectItem[] = [
       { name: "Vite.js", icon: SiVite },
     ],
     notes: [
-      { name: "AI Enhanced", className: "border !text-indigo-500 bg-transparent border-indigo-500" },
+      {
+        name: "AI Enhanced",
+        className: "border !text-indigo-500 bg-transparent border-indigo-500",
+      },
     ],
     releaseDate: "December 2021",
   },
   {
     href: "https://github.com/libvue/core",
     title: "Libvue Component Library",
+    logo: "/projects/libvue.png",
     description:
       "An opinionated Vue 3 component library focused on accessible, reusable UI patterns for modern web applications.",
     stack: [

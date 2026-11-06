@@ -18,8 +18,8 @@ export function Header() {
         aria-label="Primary"
         className="hidden sm:flex items-center justify-end gap-x-6 text-md text-foreground ml-auto"
       >
-        <a className="hover:text-primary" href="#open-source">
-          Open Source
+        <a className="hover:text-primary" href="#projects">
+          Projects
         </a>
         <a className="hover:text-primary" href="#experience">
           Experience
