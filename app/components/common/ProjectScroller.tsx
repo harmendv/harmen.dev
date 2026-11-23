@@ -16,6 +16,11 @@ type ProjectScrollerProps = {
  * The row bleeds to the viewport edges (see --page-edge in global.css) so
  * cards are never clipped by the content container, and the next card peeks
  * in from the right as a hint that there is more to scroll.
+ *
+ * Like hema.nl's carousels, the part that bleeds past the content edges is
+ * shaded in the page background colour and only fades in while the section
+ * is hovered. The shades sit in the gutters, so the peek inside the content
+ * width stays visible.
  */
 export const ProjectScroller = ({ id, title, projects, className = "" }: ProjectScrollerProps) => {
   const scrollerRef = useRef<HTMLDivElement>(null);
@@ -51,8 +56,15 @@ export const ProjectScroller = ({ id, title, projects, className = "" }: Project
   const buttonClass =
     "size-9 rounded-full border border-border flex items-center justify-center text-muted-foreground enabled:hover:border-primary enabled:hover:text-primary disabled:opacity-40";
 
+  const shadeClass = [
+    "before:pointer-events-none before:absolute before:inset-y-0 before:left-0 before:z-10 before:w-(--page-edge) before:bg-background",
+    "before:transition-opacity before:duration-300 before:ease-linear group-hover:before:opacity-0",
+    "after:pointer-events-none after:absolute after:inset-y-0 after:right-0 after:z-10 after:w-(--page-edge) after:bg-background",
+    "after:transition-opacity after:duration-300 after:ease-linear group-hover:after:opacity-0",
+  ].join(" ");
+
   return (
-    <section className={className}>
+    <section className={`group ${className}`}>
       <div className="mb-6 flex items-center justify-between gap-4">
         <h2 id={id} className="font-semibold text-xl">
           {title}
@@ -78,20 +90,22 @@ export const ProjectScroller = ({ id, title, projects, className = "" }: Project
           </button>
         </div>
       </div>
-      <div
-        ref={scrollerRef}
-        role="region"
-        aria-label={title}
-        tabIndex={0}
-        className="scrollbar-none mx-[calc(var(--page-edge)*-1)] flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-px-(--page-edge) px-(--page-edge) pb-2"
-      >
-        {projects.map((project) => (
-          <ProjectCard
-            key={project.title}
-            {...project}
-            className="w-[84%] shrink-0 snap-start sm:w-[46%] lg:w-[42%]"
-          />
-        ))}
+      <div className={`relative mx-[calc(var(--page-edge)*-1)] ${shadeClass}`}>
+        <div
+          ref={scrollerRef}
+          role="region"
+          aria-label={title}
+          tabIndex={0}
+          className="scrollbar-none flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-px-(--page-edge) px-(--page-edge) pb-2"
+        >
+          {projects.map((project) => (
+            <ProjectCard
+              key={project.title}
+              {...project}
+              className="w-[84%] shrink-0 snap-start sm:w-[46%] lg:w-[42%]"
+            />
+          ))}
+        </div>
       </div>
     </section>
   );
